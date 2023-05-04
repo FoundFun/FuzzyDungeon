@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyView : MonoBehaviour
 {
     private SpriteRenderer _sprite;

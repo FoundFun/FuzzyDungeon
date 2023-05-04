@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackPlayerTransition : PlayerTransition
 {
-    private const float DelayAttack = 0.1f;
+    private const float DelayAttack = 0.15f;
 
     private float _currentTime;
 

@@ -9,6 +9,7 @@ public class AttackPlayerState : PlayerState
     [Header("Settings")]
     [SerializeField] private float _dashSpeed;
 
+    private const float MaxSpeed = 100;
     private const float DashTime = 0.05f;
     private const float Delay = 0.05f;
 
@@ -22,7 +23,7 @@ public class AttackPlayerState : PlayerState
 
     private void OnValidate()
     {
-        _dashSpeed = Mathf.Clamp(_dashSpeed, 0, float.MaxValue);
+        _dashSpeed = Mathf.Clamp(_dashSpeed, 0, MaxSpeed);
     }
 
     private void Awake()
@@ -34,13 +35,21 @@ public class AttackPlayerState : PlayerState
 
     private void OnEnable()
     {
-        _player.SetAttackState(true);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _coroutine = StartCoroutine(Attack());
     }
 
     private void OnDisable()
     {
-        _player.SetAttackState(false);
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         StopCoroutine(_coroutine);
     }
 
@@ -49,6 +58,8 @@ public class AttackPlayerState : PlayerState
         _animator.SetBool(IsAttackHashAnimation, true);
 
         yield return new WaitForSeconds(Delay);
+
+        _player.SetAttackState(true);
 
         _currentTimeAttack = 0;
 
@@ -64,5 +75,6 @@ public class AttackPlayerState : PlayerState
 
         _rigidbody2D.velocity = Vector2.zero;
         _animator.SetBool(IsAttackHashAnimation, false);
+        _player.SetAttackState(false);
     }
 }

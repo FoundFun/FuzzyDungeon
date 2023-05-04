@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class MovePlayerState : PlayerState
 {
     [Header("Settings")]
@@ -19,16 +21,12 @@ public class MovePlayerState : PlayerState
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void OnDisable()
     {
         _animator.SetBool(IsRunHashAnimation, false);
-    }
-
-    private void Start()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()

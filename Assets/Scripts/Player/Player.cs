@@ -1,24 +1,23 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Experience))]
 public abstract class Player : MonoBehaviour
 {
+    
     [Header("Settings")]
+    [Range(0, MaxHealth)]
     [SerializeField] private int _health;
 
-    private const int StartLevel = 1;
+    private const int MaxHealth = 4;
 
-    private int _targetLevel = 20;
     private Vector3 _startPosition = Vector3.zero;
 
+    private Experience _experience;
     private Mouse _targetMouse;
     private int _currentHealth;
-    private int _level;
-    private int _targetExperience;
-    private int _currentExperience;
 
     public event UnityAction<Player> Died;
-    public event UnityAction<int> LevelChanged;
     public event UnityAction<int> HealthChanged;
     public event UnityAction GameOver;
 
@@ -26,19 +25,20 @@ public abstract class Player : MonoBehaviour
 
     public bool AttackState { get; private set; }
 
+    private void OnValidate()
+    {
+        _health = Mathf.Clamp(_health, 0, MaxHealth);
+    }
+
     private void Awake()
     {
-        _level = StartLevel;
-        _targetExperience = 1;
-        LevelChanged?.Invoke(_level);
-        _currentExperience = 0;
+        _experience = GetComponent<Experience>();
         Reset();
     }
 
     public void SetLevel(int level)
     {
-        _level = level;
-        LevelChanged?.Invoke(_level);
+        _experience.GetLevel(level);
     }
 
     public void Init(Mouse target)
@@ -48,11 +48,10 @@ public abstract class Player : MonoBehaviour
 
     public void Reset()
     {
-        _level = StartLevel;
+        _experience.Reset();
         transform.position = _startPosition;
         _currentHealth = _health;
         HealthChanged?.Invoke(_currentHealth);
-        LevelChanged?.Invoke(_level);
     }
 
     public void SetAttackState(bool state)
@@ -74,19 +73,6 @@ public abstract class Player : MonoBehaviour
 
     public void AddExperience(int reward)
     {
-        _currentExperience += reward;
-
-        if (_currentExperience >= _targetExperience)
-        {
-            _level++;
-            LevelChanged?.Invoke(_level);
-            _currentExperience = 0;
-
-            if (_level > _targetLevel)
-            {
-                _targetLevel *= 2;
-                _targetExperience++;
-            }
-        }
+        _experience.Add(reward);
     }
 }
