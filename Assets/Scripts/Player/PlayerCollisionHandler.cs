@@ -14,7 +14,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (collision.TryGetComponent(out Enemy enemy) && _player.AttackState == true)
         {
-            enemy.Die();
+            enemy.OnDie();
             _player.AddExperience(enemy.Experience);
         }
     }

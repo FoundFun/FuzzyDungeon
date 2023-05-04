@@ -1220,8 +1220,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1369,7 +1369,6 @@ MonoBehaviour:
   _explosion: {fileID: 6423602316530243699, guid: 8e6ae9553e12f446d92002c60f7a9102, type: 3}
   _virtualCamera: {fileID: 346724646}
   _puck: {fileID: 6664760975946442625, guid: 686dbbc677c484a43a458cb9d643aee0, type: 3}
-  _hitAudio: {fileID: 1789592008}
   _capacityEnemy: 20
   _players:
   - {fileID: 6648011694171043364, guid: 3217c042c8331436cb6bc58b5b0ab7a5, type: 3}
@@ -1383,10 +1382,6 @@ MonoBehaviour:
   - {fileID: 9034797425798541697, guid: 3b2dac58e9380467ba1a78fe2d322ed3, type: 3}
   _smoke: {fileID: -1942575594563035430, guid: 6da17fdfff7c74ba38f6cbaa31a42a07, type: 3}
   _blood: {fileID: 6799615100697263381, guid: bea5db980bd214589a6374597d3c8657, type: 3}
-  _minSecondBetweenSpawn: 1
-  _maxSecondBetweenSpawn: 7
-  _minFrameSpawnNumberEnemy: 1
-  _maxFrameSpawnNumberEnemy: 6
 --- !u!1 &344751939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,8 +1838,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

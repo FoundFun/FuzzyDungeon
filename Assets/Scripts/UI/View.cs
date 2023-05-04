@@ -11,7 +11,7 @@ public abstract class View : MonoBehaviour
     [SerializeField] private Image _loadDown;
     [SerializeField] private AudioSource _loadAudio;
 
-    private const float PositionLoadingImage = 0.1f;
+    private const float PositionLoadingImage = 0.5f;
     private const float TimeAnimation = 0.2f;
     private const float Delay = 1;
 
@@ -59,14 +59,14 @@ public abstract class View : MonoBehaviour
 
     private IEnumerator PlayTransitionScene()
     {
-        _loadUp.transform.LeanMoveLocalY(-PositionLoadingImage, TimeAnimation).setEaseInOutExpo().setIgnoreTimeScale(true);
-        _loadDown.transform.LeanMoveLocalY(PositionLoadingImage, TimeAnimation).setEaseInOutExpo().setIgnoreTimeScale(true).setOnComplete(PlayAudio);
+        _loadUp.transform.LeanMoveLocalY(-PositionLoadingImage, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
+        _loadDown.transform.LeanMoveLocalY(PositionLoadingImage, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true).setOnComplete(PlayAudio);
 
         yield return new WaitForSecondsRealtime(Delay);
 
         PlayAudio();
-        _loadUp.transform.LeanMoveLocalY(Screen.height, TimeAnimation).setEaseInOutExpo().setIgnoreTimeScale(true);
-        _loadDown.transform.LeanMoveLocalY(-Screen.height, TimeAnimation).setEaseInOutExpo().setIgnoreTimeScale(true);
+        _loadUp.transform.LeanMoveLocalY(Screen.height, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
+        _loadDown.transform.LeanMoveLocalY(-Screen.height, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
     }
 
     private void PlayAudio()

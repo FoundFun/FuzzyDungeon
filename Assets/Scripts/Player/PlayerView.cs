@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PlayerStateMachine))]
 public class PlayerView : MonoBehaviour
 {
     private PlayerStateMachine _state;
@@ -19,13 +20,6 @@ public class PlayerView : MonoBehaviour
 
     private void FlipSprite(Vector3 targetMousePosition)
     {
-        if (targetMousePosition.x < transform.position.x && _sprite.flipX == false)
-        {
-            _sprite.flipX = true;
-        }
-        else if (targetMousePosition.x > transform.position.x && _sprite.flipX == true)
-        {
-            _sprite.flipX = false;
-        }
+        _sprite.flipX = targetMousePosition.x < transform.position.x;
     }
 }

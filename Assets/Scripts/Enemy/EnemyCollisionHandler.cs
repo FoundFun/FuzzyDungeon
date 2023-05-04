@@ -16,7 +16,6 @@ public class EnemyCollisionHandler : MonoBehaviour
         {
             if (player.AttackState == false)
             {
-                Debug.Log("TakeDamage");
                 player.TakeDamage(_enemy.Damage);
             }
         }

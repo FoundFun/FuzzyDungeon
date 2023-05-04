@@ -1,6 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(ShadowCaster2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : MonoBehaviour
 {
     [Header("Settings")]
@@ -8,6 +14,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _experience;
 
     private Player _target;
+    private Collider2D _collider2D;
+    private ShadowCaster2D _shadowCaster2D;
+    private SpriteRenderer _spriteRenderer;
+    private Coroutine _coroutine;
+    private AudioSource _hitAudio;
 
     public event UnityAction<Enemy> Died;
 
@@ -17,19 +28,57 @@ public class Enemy : MonoBehaviour
 
     public bool AttackState { get; private set; }
 
+    private void Awake()
+    {
+        _hitAudio = GetComponent<AudioSource>();
+        _collider2D = GetComponent<Collider2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _shadowCaster2D = GetComponent<ShadowCaster2D>();
+    }
+
+    private void OnEnable()
+    {
+        _collider2D.enabled = true;
+        _spriteRenderer.enabled = true;
+        _shadowCaster2D.enabled = true;
+    }
+
     public void Init(Player target)
     {
         _target = target;
     }
 
-    public void SetAttackState(bool state)
+    public void Attack()
     {
-        AttackState = state;
+        AttackState = true;
     }
 
-    public void Die()
+    public void StopAttack()
+    {
+        AttackState = false;
+    }
+
+    public void OnDie()
     {
         Died?.Invoke(this);
+
+        if (_coroutine != null)
+        {
+            StopCoroutine(Die());
+        }
+
+        _coroutine = StartCoroutine(Die());
+    }
+
+    private IEnumerator Die()
+    {
+        _collider2D.enabled = false;
+        _spriteRenderer.enabled = false;
+        _shadowCaster2D.enabled = false;
+        _hitAudio.Play();
+
+        yield return new WaitForSeconds(_hitAudio.clip.length);
+
         gameObject.SetActive(false);
     }
 }

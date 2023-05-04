@@ -10,17 +10,15 @@ public class SoulsHarvestState : PlayerState
 {
     [SerializeField] private float _propagationSpeed;
 
-    private const float IntensityShaking = 2;
-
     private readonly int IsSoulsHarvest = Animator.StringToHash("IsSoulsHarvest");
 
     private List<Enemy> _enemies = new List<Enemy>();
+    private List<Explosion> _explosions = new List<Explosion>();
 
     private Demon _demon;
     private Animator _animator;
     private Coroutine _coroutine;
     private AudioSource _explosionAudio;
-    private CinemachineBasicMultiChannelPerlin _virtualCamera;
 
     private void Awake()
     {
@@ -33,38 +31,52 @@ public class SoulsHarvestState : PlayerState
     private void OnEnable()
     {
         _demon.SetAttackState(true);
+
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _coroutine = StartCoroutine(Attack());
     }
     private void OnDisable()
     {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _demon.SetAttackState(false);
-        StopCoroutine(_coroutine);
     }
 
-    public void Init(List<Enemy> enemies, CinemachineVirtualCamera virtualCamera)
+    public void Init(Explosion explosion, List<Enemy> enemies, CinemachineVirtualCamera virtualCamera)
     {
+        Explosion template = Instantiate(explosion);
+        template.Init(virtualCamera);
+        template.gameObject.SetActive(false);
+
         _enemies = enemies;
-        _virtualCamera = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _virtualCamera.m_AmplitudeGain = 0;
+        _explosions.Add(template);
     }
 
     private IEnumerator Attack()
     {
+        int index = Random.Range(0, _explosions.Count);
+
         _animator.SetBool(IsSoulsHarvest, true);
+        _explosions[index].OnBlowUp(_demon);
         _explosionAudio.Play();
-        _virtualCamera.m_AmplitudeGain = IntensityShaking;
 
         for (int i = 0; i < _enemies.Count; i++)
         {
             if (_enemies[i].gameObject.activeSelf == true)
             {
-                _enemies[i].Die();
+                _enemies[i].OnDie();
             }
 
             yield return null;
         }
 
-        _virtualCamera.m_AmplitudeGain = 0;
         _animator.SetBool(IsSoulsHarvest, false);
     }
 }

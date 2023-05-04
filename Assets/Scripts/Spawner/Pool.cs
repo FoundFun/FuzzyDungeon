@@ -3,9 +3,10 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Pool;
 using Cinemachine;
 
-public abstract class ObjectPool : MonoBehaviour
+public abstract class Pool : MonoBehaviour
 {
     [Header("BaseComponents")]
     [SerializeField] private Image[] _playerIcon;
@@ -24,12 +25,15 @@ public abstract class ObjectPool : MonoBehaviour
     [SerializeField] private Explosion _explosion;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private Puck _puck;
-    [SerializeField] private AudioSource _hitAudio;
     [Header("Settings")]
+    [Range(0, int.MaxValue)]
     [SerializeField] private int _capacityEnemy;
 
     private const int EffectsNumber = 20;
-    private const int StartStepLevel = 5;
+    private const int StartStepLevel = 10;
+
+    private ObjectPool<Enemy> _pool = new ObjectPool<Enemy>(createFunc: () => new Enemy(), actionOnGet: (obj) => obj.gameObject.SetActive(true),
+        actionOnRelease: (obj) => obj.gameObject.SetActive(false), actionOnDestroy: (obj) => Destroy(obj), collectionCheck: false, defaultCapacity: 10, maxSize: 10);
 
     private List<Enemy> _poolEnemies = new List<Enemy>();
     private List<Player> _poolPlayers = new List<Player>();
@@ -40,7 +44,12 @@ public abstract class ObjectPool : MonoBehaviour
     private int _currentLevelPlayer;
     private int _countGameOver;
 
-    public void ResetPoolEnemy()
+    private void OnValidate()
+    {
+        _capacityEnemy = Mathf.Clamp(_capacityEnemy, 0, int.MaxValue);
+    }
+
+    public void ResetEnemy()
     {
         foreach (var enemy in _poolEnemies)
         {
@@ -48,7 +57,7 @@ public abstract class ObjectPool : MonoBehaviour
         }
     }
 
-    public void ReserPoolPlayer()
+    public void ReserPlayer()
     {
         _currentLevelPlayer = 0;
         _stepLevel = StartStepLevel;
@@ -200,7 +209,7 @@ public abstract class ObjectPool : MonoBehaviour
             }
         }
 
-        ResetPoolEnemy();
+        ResetEnemy();
     }
 
     private void OnLevelChanged(int level)
@@ -212,16 +221,16 @@ public abstract class ObjectPool : MonoBehaviour
     private void EnablePlayer(Player player)
     {
         player.Died += OnDied;
+        player.GetComponent<Experience>().LevelChanged += OnLevelChanged;
         player.GameOver += _game.OnGameOver;
-        player.LevelChanged += OnLevelChanged;
         player.HealthChanged += _healthBar.OnHealthChanged;
     }
 
     private void DisablePlayer(Player player)
     {
         player.gameObject.SetActive(false);
+        player.GetComponent<Experience>().LevelChanged -= OnLevelChanged;
         player.HealthChanged -= _healthBar.OnHealthChanged;
-        player.LevelChanged -= OnLevelChanged;
         player.GameOver -= _game.OnGameOver;
         player.Died -= OnDied;
     }
@@ -276,7 +285,7 @@ public abstract class ObjectPool : MonoBehaviour
         {
             if (player.TryGetComponent(out SoulsHarvestState soulsState))
             {
-                soulsState.Init(_poolEnemies, _virtualCamera);
+                soulsState.Init(_explosion, _poolEnemies, _virtualCamera);
             }
 
             thirdSpell.Init(_darkFillThirdSpell);
@@ -288,7 +297,6 @@ public abstract class ObjectPool : MonoBehaviour
     {
         if (TryGetObject(out Blood blood))
         {
-            _hitAudio.Play();
             blood.OnDied(enemy);
         }
 

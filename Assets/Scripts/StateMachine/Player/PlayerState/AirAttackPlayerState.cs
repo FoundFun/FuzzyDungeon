@@ -28,14 +28,23 @@ public class AirAttackPlayerState : PlayerState
 
     private void OnEnable()
     {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _demon.SetAttackState(true);
         _coroutine = StartCoroutine(Attack());
     }
 
     private void OnDisable()
     {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
         _demon.SetAttackState(false);
-        StopCoroutine(_coroutine);
     }
 
     public void Init(Explosion explosion, CinemachineVirtualCamera virtualCamera)

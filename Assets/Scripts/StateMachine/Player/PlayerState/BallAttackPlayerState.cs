@@ -19,7 +19,7 @@ public class BallAttackPlayerState : PlayerState
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector3 _lastVelocity;
-    private Coroutine _AttackCoroutine;
+    private Coroutine _attackCoroutine;
     private Coroutine _shakingCoroutine;
     private CinemachineBasicMultiChannelPerlin _virtualCamera;
 
@@ -32,14 +32,28 @@ public class BallAttackPlayerState : PlayerState
 
     private void OnEnable()
     {
+        if (_attackCoroutine != null)
+        {
+            StopCoroutine(_attackCoroutine);
+        }
+
         _demon.SetAttackState(true);
-        _AttackCoroutine = StartCoroutine(Attack());
+        _attackCoroutine = StartCoroutine(Attack());
     }
 
     private void OnDisable()
     {
+        if (_attackCoroutine != null)
+        {
+            StopCoroutine(_attackCoroutine);
+        }
+
+        if (_shakingCoroutine != null)
+        {
+            StopCoroutine(_shakingCoroutine);
+        }
+
         _demon.SetAttackState(false);
-        StopCoroutine(_AttackCoroutine);
         _rigidbody2D.velocity = Vector2.zero;
         _spriteRenderer.enabled = true;
         _puck.gameObject.SetActive(false);

@@ -89,7 +89,8 @@ public class Game : MonoBehaviour
         _numberVerbalWarning = StartNumberVerbalWarning;
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
-        _spawner.ReserPoolPlayer();
-        _spawner.ResetPoolEnemy();
+        _spawner.ReserPlayer();
+        _spawner.ResetEnemy();
+        _spawner.Reset();
     }
 }
