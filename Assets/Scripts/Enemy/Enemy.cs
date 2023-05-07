@@ -72,10 +72,11 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Die()
     {
+        _hitAudio.Play();
+
         _collider2D.enabled = false;
         _spriteRenderer.enabled = false;
         _shadowCaster2D.enabled = false;
-        _hitAudio.Play();
 
         yield return new WaitForSeconds(_hitAudio.clip.length);
 
