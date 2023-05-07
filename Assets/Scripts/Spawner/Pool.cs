@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Pool;
 using Cinemachine;
 
 public abstract class Pool : MonoBehaviour
@@ -31,9 +30,6 @@ public abstract class Pool : MonoBehaviour
 
     private const int EffectsNumber = 20;
     private const int StartStepLevel = 10;
-
-    private ObjectPool<Enemy> _pool = new ObjectPool<Enemy>(createFunc: () => new Enemy(), actionOnGet: (obj) => obj.gameObject.SetActive(true),
-        actionOnRelease: (obj) => obj.gameObject.SetActive(false), actionOnDestroy: (obj) => Destroy(obj), collectionCheck: false, defaultCapacity: 10, maxSize: 10);
 
     private List<Enemy> _poolEnemies = new List<Enemy>();
     private List<Player> _poolPlayers = new List<Player>();
