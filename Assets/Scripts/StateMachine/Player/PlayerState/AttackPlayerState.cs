@@ -59,7 +59,7 @@ public class AttackPlayerState : PlayerState
 
         yield return new WaitForSeconds(Delay);
 
-        _player.SetAttackState(true);
+        _player.Attack();
 
         _currentTimeAttack = 0;
 
@@ -75,6 +75,6 @@ public class AttackPlayerState : PlayerState
 
         _rigidbody2D.velocity = Vector2.zero;
         _animator.SetBool(IsAttackHashAnimation, false);
-        _player.SetAttackState(false);
+        _player.StopAttack();
     }
 }

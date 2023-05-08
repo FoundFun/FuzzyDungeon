@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 6742082108040111033}
   - component: {fileID: 1931760051476264483}
   - component: {fileID: 7904736358785397972}
+  - component: {fileID: 3365115466547845407}
   m_Layer: 0
   m_Name: Chort
   m_TagString: Untagged
@@ -261,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e5d67bdd676426192bc9e2b17466bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: 8371168602710958948, guid: 7637eaf926e5242d688a7cb4dbbdf05b, type: 3}
   _health: 3
 --- !u!114 &8830781753506159675
 MonoBehaviour:
@@ -414,3 +416,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 5193430127909780318}
+--- !u!114 &3365115466547845407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537320100867956313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171e1698914414f7c86e98c7d46ec7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
