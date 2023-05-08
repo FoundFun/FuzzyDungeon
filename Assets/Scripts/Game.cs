@@ -1,30 +1,43 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField] private Image[] _playerIcon;
     [SerializeField] private StartView _startView;
     [SerializeField] private GameOverView _gameOverView;
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private TMP_Text _verbalWarningText;
+    [SerializeField] private TMP_Text _currentLevel;
+    [SerializeField] private TMP_Text _targetLevel;
     [SerializeField] private AudioMixerSnapshot _normal;
     [SerializeField] private AudioMixerSnapshot _gameOver;
+    [SerializeField] private DarkFill _darkFillFirstSpell;
+    [SerializeField] private DarkFill _darkFillSecondSpell;
+    [SerializeField] private DarkFill _darkFillThirdSpell;
+    [SerializeField] private HealthBar _healthBar;
 
     private const int MaxNumberVerbalWarning = 4;
-    private const int StartNumberVerbalWarning = 0;
+    private const int StartStepLevel = 2;
+    private const int StartCurrentLevel = 1;
     private const string Slash = "/";
 
+    private int _stepLevel = StartStepLevel;
     private int _numberVerbalWarning;
+    private int _currentIndexPlayer;
 
-    public int MaxValueVerbalWarning => MaxNumberVerbalWarning;
+    public DarkFill DarkFillFirstSpell => _darkFillFirstSpell;
+    public DarkFill DarkFillSecondSpell => _darkFillSecondSpell;
+    public DarkFill DarkFillThirdSpell => _darkFillThirdSpell;
+    public int CurrentIndexPlayer => _currentIndexPlayer;
 
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        _numberVerbalWarning = StartNumberVerbalWarning;
     }
 
     private void OnEnable()
@@ -42,8 +55,65 @@ public class Game : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0;
+        _targetLevel.text = _stepLevel.ToString();
+        _numberVerbalWarning = 0;
+        _currentLevel.text = StartCurrentLevel.ToString();
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
+    }
+
+    public void OnLevelChanged(int level)
+    {
+        _currentLevel.text = level.ToString();
+    }
+
+    public void OnDied(Player player)
+    {
+        int currentLevel = GetLevel(_currentLevel);
+        int targetLevel = GetLevel(_targetLevel);
+
+        if (currentLevel < targetLevel)
+        {
+            if (IsGameOver())
+            {
+                Reset();
+                _normal.TransitionTo(0);
+                _gameScreen.OnStopMusic();
+            }
+            else
+            {
+                player.Reset();
+                player.SetLevel(currentLevel);
+            }
+        }
+        else
+        {
+            _currentIndexPlayer++;
+
+            if (_spawner.TryGetNextPlayer(currentLevel))
+            {
+                _stepLevel *= 2;
+                _targetLevel.text = _stepLevel.ToString();
+            }
+            else
+            {
+                _targetLevel.text = "???";
+            }
+        }
+
+        _spawner.ResetEnemy();
+    }
+
+    public void OnHealthBarChanged(int health)
+    {
+        _healthBar.OnHealthChanged(health);
+    }
+
+    private int GetLevel(TMP_Text level)
+    {
+        bool isNumber = int.TryParse(level.text, out int result);
+
+        return isNumber ? result : int.MaxValue;
     }
 
     public void OnGameOver()
@@ -53,20 +123,12 @@ public class Game : MonoBehaviour
         _gameOver.TransitionTo(0);
     }
 
-    public int IncreaseVerbalWarning()
+    private bool IsGameOver()
     {
         _numberVerbalWarning++;
+        _verbalWarningText.text = $"{_numberVerbalWarning} {Slash} {MaxNumberVerbalWarning}";
 
-        if (_numberVerbalWarning >= MaxNumberVerbalWarning)
-        {
-            Reset();
-            _normal.TransitionTo(0);
-            _gameScreen.OnStopMusic();
-        }
-
-        _verbalWarningText.text = _numberVerbalWarning.ToString() + Slash + MaxNumberVerbalWarning.ToString();
-
-        return _numberVerbalWarning;
+        return _numberVerbalWarning >= MaxNumberVerbalWarning;
     }
 
     private void OnStartButtonClick()
@@ -74,6 +136,7 @@ public class Game : MonoBehaviour
         Time.timeScale = 1;
         _startView.CloseScreen();
         _gameScreen.OnPlayMusic();
+        EnableNextIcon();
     }
 
     private void OnPlayButtonClick()
@@ -81,16 +144,40 @@ public class Game : MonoBehaviour
         Time.timeScale = 1;
         _gameOverView.CloseScreen();
         _normal.TransitionTo(0);
+        EnableNextIcon();
     }
 
     private void Reset()
     {
         Time.timeScale = 0;
-        _numberVerbalWarning = StartNumberVerbalWarning;
+        _currentIndexPlayer = 0;
+        _numberVerbalWarning = 0;
+        _stepLevel = StartStepLevel;
+        _targetLevel.text = _stepLevel.ToString();
+        _currentLevel.text = StartCurrentLevel.ToString();
+        _verbalWarningText.text = $"{_numberVerbalWarning} {Slash} {MaxNumberVerbalWarning}";
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
-        _spawner.ReserPlayer();
+        _spawner.ResetPlayer();
         _spawner.ResetEnemy();
         _spawner.Reset();
+        _spawner.TryGetNextPlayer(StartCurrentLevel);
+        DisableAllIcon();
+    }
+
+    private void EnableNextIcon()
+    {
+        if (_playerIcon.Length > _currentIndexPlayer && _currentIndexPlayer >= 0)
+        {
+            _playerIcon[_currentIndexPlayer].gameObject.SetActive(true);
+        }
+    }
+
+    private void DisableAllIcon()
+    {
+        foreach (var icon in _playerIcon)
+        {
+            icon.gameObject.SetActive(false);
+        }
     }
 }

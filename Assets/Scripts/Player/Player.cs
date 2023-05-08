@@ -1,19 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Experience))]
 public abstract class Player : MonoBehaviour
 {
-    
     [Header("Settings")]
     [Range(0, MaxHealth)]
     [SerializeField] private int _health;
 
     private const int MaxHealth = 4;
+    private const float DelayTakeDamage = 2;
 
     private Vector3 _startPosition = Vector3.zero;
 
     private Experience _experience;
+    private Coroutine _coroutine;
     private Mouse _targetMouse;
     private int _currentHealth;
 
@@ -54,25 +56,45 @@ public abstract class Player : MonoBehaviour
         HealthChanged?.Invoke(_currentHealth);
     }
 
-    public void SetAttackState(bool state)
+    public void Attack()
     {
-        AttackState = state;
+        AttackState = true;
+    }
+
+    public void StopAttack()
+    {
+        AttackState = false;
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-        HealthChanged?.Invoke(_currentHealth);
-
-        if (_currentHealth <= 0)
+        if (_coroutine == null)
         {
-            GameOver?.Invoke();
-            Died?.Invoke(this);
+            _currentHealth -= damage;
+            HealthChanged?.Invoke(_currentHealth);
+
+            if (_currentHealth <= 0)
+            {
+                GameOver?.Invoke();
+                Died?.Invoke(this);
+            }
+            else
+            {
+                _coroutine = StartCoroutine(EnableInvulnerability());
+            }
         }
     }
 
     public void AddExperience(int reward)
     {
         _experience.Add(reward);
+    }
+
+    private IEnumerator EnableInvulnerability()
+    {
+        yield return new WaitForSeconds(DelayTakeDamage);
+
+        StopCoroutine(_coroutine);
+        _coroutine = null;
     }
 }

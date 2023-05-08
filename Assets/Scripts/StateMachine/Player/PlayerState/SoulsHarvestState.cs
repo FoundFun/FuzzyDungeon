@@ -30,7 +30,7 @@ public class SoulsHarvestState : PlayerState
 
     private void OnEnable()
     {
-        _demon.SetAttackState(true);
+        _demon.Attack();
 
         if (_coroutine != null)
         {
@@ -46,7 +46,7 @@ public class SoulsHarvestState : PlayerState
             StopCoroutine(_coroutine);
         }
 
-        _demon.SetAttackState(false);
+        _demon.StopAttack();
     }
 
     public void Init(Explosion explosion, List<Enemy> enemies, CinemachineVirtualCamera virtualCamera)

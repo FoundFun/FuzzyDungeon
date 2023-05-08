@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Spawner : Pool
+public class Spawner : ObjectPool
 {
     [Header("Components")]
     [SerializeField] private Player[] _players;

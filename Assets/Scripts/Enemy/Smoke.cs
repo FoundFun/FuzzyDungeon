@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Smoke : MonoBehaviour
 {
-    private const float Delay = 1.7f;
+    private const float Delay = 0.7f;
 
     private Coroutine _coroutine;
 

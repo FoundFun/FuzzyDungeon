@@ -37,7 +37,7 @@ public class BallAttackPlayerState : PlayerState
             StopCoroutine(_attackCoroutine);
         }
 
-        _demon.SetAttackState(true);
+        _demon.Attack();
         _attackCoroutine = StartCoroutine(Attack());
     }
 
@@ -53,7 +53,7 @@ public class BallAttackPlayerState : PlayerState
             StopCoroutine(_shakingCoroutine);
         }
 
-        _demon.SetAttackState(false);
+        _demon.StopAttack();
         _rigidbody2D.velocity = Vector2.zero;
         _spriteRenderer.enabled = true;
         _puck.gameObject.SetActive(false);

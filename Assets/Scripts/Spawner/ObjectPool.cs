@@ -1,44 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using TMPro;
-using UnityEngine.UI;
 using Cinemachine;
 
-public abstract class Pool : MonoBehaviour
+public abstract class ObjectPool : MonoBehaviour
 {
     [Header("BaseComponents")]
-    [SerializeField] private Image[] _playerIcon;
     [SerializeField] private Game _game;
     [SerializeField] private Mouse _mouse;
-    [SerializeField] private TMP_Text _currentLevel;
-    [SerializeField] private TMP_Text _targetLevel;
-    [SerializeField] private HealthBar _healthBar;
     [SerializeField] private GameObject _containerEnemies;
     [SerializeField] private GameObject _containerPlayers;
     [SerializeField] private GameObject _containerSmokes;
     [SerializeField] private GameObject _containerBloods;
-    [SerializeField] private DarkFill _darkFillFirstSpell;
-    [SerializeField] private DarkFill _darkFillSecondSpell;
-    [SerializeField] private DarkFill _darkFillThirdSpell;
+    [SerializeField] private Puck _puck;
     [SerializeField] private Explosion _explosion;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-    [SerializeField] private Puck _puck;
     [Header("Settings")]
     [Range(0, int.MaxValue)]
     [SerializeField] private int _capacityEnemy;
 
     private const int EffectsNumber = 20;
-    private const int StartStepLevel = 10;
 
     private List<Enemy> _poolEnemies = new List<Enemy>();
     private List<Player> _poolPlayers = new List<Player>();
     private List<Smoke> _poolSmoke = new List<Smoke>();
     private List<Blood> _poolBloods = new List<Blood>();
-    private int _stepLevel = StartStepLevel;
-
-    private int _currentLevelPlayer;
-    private int _countGameOver;
 
     private void OnValidate()
     {
@@ -53,22 +39,32 @@ public abstract class Pool : MonoBehaviour
         }
     }
 
-    public void ReserPlayer()
+    public void ResetPlayer()
     {
-        _currentLevelPlayer = 0;
-        _stepLevel = StartStepLevel;
-        _targetLevel.text = _stepLevel.ToString();
-
         foreach (var player in _poolPlayers)
         {
+            player.Reset();
             player.gameObject.SetActive(false);
             DisablePlayer(player);
         }
+    }
 
-        SetNextTarget(_poolPlayers[_currentLevelPlayer]);
-        EnablePlayer(_poolPlayers[_currentLevelPlayer]);
-        _poolPlayers[_currentLevelPlayer].Reset();
-        _poolPlayers[_currentLevelPlayer].gameObject.SetActive(true);
+    public bool TryGetNextPlayer(int currentLevel)
+    {
+        if (TryGetObject(out Player nextPlayer))
+        {
+            nextPlayer.Reset();
+            nextPlayer.SetLevel(currentLevel);
+
+            if (_game.CurrentIndexPlayer > 0)
+            {
+                DisablePlayer(_poolPlayers[_game.CurrentIndexPlayer - 1]);
+            }
+
+            SetNextTarget(nextPlayer);
+        }
+
+        return _game.CurrentIndexPlayer < _poolPlayers.Count - 1;
     }
 
     protected void Initialize(Enemy[] enemies)
@@ -78,7 +74,7 @@ public abstract class Pool : MonoBehaviour
             int index = Random.Range(0, enemies.Length);
 
             Enemy template = Instantiate(enemies[index], _containerEnemies.transform);
-            template.Init(_poolPlayers[_currentLevelPlayer]);
+            template.Init(_poolPlayers[_game.CurrentIndexPlayer]);
             template.gameObject.SetActive(false);
 
             _poolEnemies.Add(template);
@@ -87,8 +83,6 @@ public abstract class Pool : MonoBehaviour
 
     protected void Initialize(Player[] players)
     {
-        _targetLevel.text = _stepLevel.ToString();
-
         for (int i = 0; i < players.Length; i++)
         {
             Player template = Instantiate(players[i], _containerPlayers.transform);
@@ -101,8 +95,6 @@ public abstract class Pool : MonoBehaviour
 
     protected void Initialize(Smoke smoke, Blood blood)
     {
-        _targetLevel.text = _stepLevel.ToString();
-
         for (int i = 0; i < EffectsNumber; i++)
         {
             Smoke smokeTemplate = Instantiate(smoke, _containerSmokes.transform);
@@ -130,26 +122,9 @@ public abstract class Pool : MonoBehaviour
 
     protected bool TryGetObject(out Player player)
     {
-        if (_currentLevelPlayer > 0)
+        if (_game.CurrentIndexPlayer < _poolPlayers.Count)
         {
-            _playerIcon[_currentLevelPlayer - 1].gameObject.SetActive(false);
-        }
-
-        _playerIcon[_currentLevelPlayer].gameObject.SetActive(true);
-
-        if (_currentLevelPlayer < _poolPlayers.Count - 1)
-        {
-            player = _poolPlayers.ElementAt(_currentLevelPlayer);
-
-            _stepLevel *= 2;
-            _targetLevel.text = _stepLevel.ToString();
-            _currentLevelPlayer++;
-        }
-        else if (_countGameOver < _game.MaxValueVerbalWarning)
-        {
-            player = _poolPlayers.ElementAt(_currentLevelPlayer);
-
-            _targetLevel.text = "???";
+            player = _poolPlayers.ElementAt(_game.CurrentIndexPlayer);
         }
         else
         {
@@ -179,70 +154,22 @@ public abstract class Pool : MonoBehaviour
         return blood != null;
     }
 
-    private void OnDied(Player player)
-    {
-        int currentLevel = GetLevel(_currentLevel);
-        int targetLevel = GetLevel(_targetLevel);
-
-        if (currentLevel >= targetLevel && TryGetObject(out Player nextPlayer))
-        {
-            nextPlayer.Reset();
-            nextPlayer.SetLevel(currentLevel);
-            nextPlayer.gameObject.SetActive(true);
-
-            DisablePlayer(player);
-            SetNextTarget(nextPlayer);
-        }
-        else
-        {
-            _countGameOver = _game.IncreaseVerbalWarning();
-
-            player.Reset();
-
-            if (_countGameOver < _game.MaxValueVerbalWarning)
-            {
-                player.SetLevel(currentLevel);
-            }
-        }
-
-        ResetEnemy();
-    }
-
-    private void OnLevelChanged(int level)
-    {
-        int currentLevel = int.Parse(_currentLevel.text);
-        _currentLevel.text = level.ToString();
-    }
-
     private void EnablePlayer(Player player)
     {
-        player.Died += OnDied;
-        player.GetComponent<Experience>().LevelChanged += OnLevelChanged;
+        player.Died += _game.OnDied;
+        player.GetComponent<Experience>().LevelChanged += _game.OnLevelChanged;
         player.GameOver += _game.OnGameOver;
-        player.HealthChanged += _healthBar.OnHealthChanged;
+        player.HealthChanged += _game.OnHealthBarChanged;
+        player.gameObject.SetActive(true);
     }
 
     private void DisablePlayer(Player player)
     {
         player.gameObject.SetActive(false);
-        player.GetComponent<Experience>().LevelChanged -= OnLevelChanged;
-        player.HealthChanged -= _healthBar.OnHealthChanged;
+        player.GetComponent<Experience>().LevelChanged -= _game.OnLevelChanged;
+        player.HealthChanged -= _game.OnHealthBarChanged;
         player.GameOver -= _game.OnGameOver;
-        player.Died -= OnDied;
-    }
-
-    private int GetLevel(TMP_Text level)
-    {
-        bool isNumber = int.TryParse(level.text, out int result);
-
-        if (isNumber)
-        {
-            return result;
-        }
-        else
-        {
-            return int.MaxValue;
-        }
+        player.Died -= _game.OnDied;
     }
 
     private void SetNextTarget(Player nextPlayer)
@@ -262,8 +189,12 @@ public abstract class Pool : MonoBehaviour
                 airState.Init(_explosion, _virtualCamera);
             }
 
-            firstSpell.Init(_darkFillFirstSpell);
-            _darkFillFirstSpell.Unlock();
+            firstSpell.Init(_game.DarkFillFirstSpell);
+            _game.DarkFillFirstSpell.Unlock();
+        }
+        else
+        {
+            _game.DarkFillFirstSpell.Lock();
         }
 
         if (player.TryGetComponent(out AttackBallTransition secondSpell))
@@ -273,8 +204,12 @@ public abstract class Pool : MonoBehaviour
                 ballState.Init(_puck, _virtualCamera);
             }
 
-            secondSpell.Init(_darkFillSecondSpell);
-            _darkFillSecondSpell.Unlock();
+            secondSpell.Init(_game.DarkFillSecondSpell);
+            _game.DarkFillSecondSpell.Unlock();
+        }
+        else
+        {
+            _game.DarkFillSecondSpell.Lock();
         }
 
         if (player.TryGetComponent(out AttackSoulsHarvestTransition thirdSpell))
@@ -284,8 +219,12 @@ public abstract class Pool : MonoBehaviour
                 soulsState.Init(_explosion, _poolEnemies, _virtualCamera);
             }
 
-            thirdSpell.Init(_darkFillThirdSpell);
-            _darkFillThirdSpell.Unlock();
+            thirdSpell.Init(_game.DarkFillThirdSpell);
+            _game.DarkFillThirdSpell.Unlock();
+        }
+        else
+        {
+            _game.DarkFillThirdSpell.Lock();
         }
     }
 

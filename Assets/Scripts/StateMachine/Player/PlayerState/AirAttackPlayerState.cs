@@ -33,7 +33,7 @@ public class AirAttackPlayerState : PlayerState
             StopCoroutine(_coroutine);
         }
 
-        _demon.SetAttackState(true);
+        _demon.Attack();
         _coroutine = StartCoroutine(Attack());
     }
 
@@ -44,7 +44,7 @@ public class AirAttackPlayerState : PlayerState
             StopCoroutine(_coroutine);
         }
 
-        _demon.SetAttackState(false);
+        _demon.StopAttack();
     }
 
     public void Init(Explosion explosion, CinemachineVirtualCamera virtualCamera)
