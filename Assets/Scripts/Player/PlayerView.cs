@@ -1,25 +1,30 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(PlayerStateMachine))]
+[RequireComponent(typeof(Player))]
 public class PlayerView : MonoBehaviour
 {
-    private PlayerStateMachine _state;
+    private Player _player;
     private SpriteRenderer _sprite;
 
     private void Start()
     {
-        _state = GetComponent<PlayerStateMachine>();
+        _player = GetComponent<Player>();
         _sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        FlipSprite(_state.MousePosition);
+        if (_player.AttackState == false)
+        {
+            FlipSprite(_player.TargetMouse.transform.position);
+        }
     }
 
     private void FlipSprite(Vector3 targetMousePosition)
     {
-        _sprite.flipX = targetMousePosition.x < transform.position.x;
+        _sprite.flipX = targetMousePosition.x < transform.position.x
+            && targetMousePosition.x != transform.position.x
+            ? _sprite.flipX = true : _sprite.flipX = false;
     }
 }

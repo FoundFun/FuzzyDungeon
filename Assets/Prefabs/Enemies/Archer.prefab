@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18eafe9e026043a88354d96bf454790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: {fileID: 1282180336578924211}
+  _startState: {fileID: 1282180336578924211}
 --- !u!114 &1282180336578924211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +303,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 619127596033796944}
-  _delay: 1.2
   _dashSpeed: 95
   _dashLength: 5
 --- !u!114 &619127596033796944
@@ -319,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1282180336578924211}
-  AttackTime: 2.5
+  _attackTime: 2.1
 --- !u!114 &7643875748257174397
 MonoBehaviour:
   m_ObjectHideFlags: 0

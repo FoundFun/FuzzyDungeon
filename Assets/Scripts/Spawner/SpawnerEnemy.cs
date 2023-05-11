@@ -1,13 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Spawner : ObjectPool
+public class SpawnerEnemy : ObjectPool<Enemy>
 {
-    [Header("Components")]
-    [SerializeField] private Player[] _players;
     [SerializeField] private Enemy[] _enemies;
-    [SerializeField] private Smoke _smoke;
-    [SerializeField] private Blood _blood;
+    [SerializeField] private GameObject _containerEnemies;
+    [SerializeField] private SpawnerPlayer _spawnerPlayer;
+    [SerializeField] private SpawnerSmoke _spawnerSmoke;
+    [SerializeField] private SpawnerBlood _spawnerBlood;
 
     private const float StartMaxSecondBetweenSpawn = 7;
     private const float StartMinSecondBetweenSpawn = 1;
@@ -28,30 +30,24 @@ public class Spawner : ObjectPool
     private int _currentMaxFrameSpawnNumberEnemy;
     private int _currentMinFrameSpawnNumberEnemy;
     private int _counterSpawnedEnemies;
-    private int _enemyCount;
+    private int _randomIndex;
+    private int _count;
+
+    private List<Enemy> _pool = new List<Enemy>();
 
     private void Awake()
     {
         _spawnPoints = GetComponentsInChildren<SpawnPoint>();
-
-        Initialize(_players);
-        Initialize(_smoke, _blood);
     }
 
     private void Start()
     {
-        Initialize(_enemies);
+        _pool = Initialize(_enemies, _containerEnemies);
 
         _currentMaxFrameSpawnNumberEnemy = StartMaxFrameSpawnNumberEnemy;
         _currentMinFrameSpawnNumberEnemy = StartMinFrameSpawnNumberEnemy;
         _currentMaxSecondBetweenSpawn = StartMaxSecondBetweenSpawn;
         _currentMinSecondBetweenSpawn = StartMinSecondBetweenSpawn;
-
-        if (TryGetObject(out Player player))
-        {
-            player.Reset();
-            player.gameObject.SetActive(true);
-        }
 
         if (_coroutine != null)
         {
@@ -70,19 +66,24 @@ public class Spawner : ObjectPool
                 StopCoroutine(_coroutine);
             }
 
-            for (int i = 0; i < _enemyCount; i++)
+            for (int i = 0; i < _count; i++)
             {
-                if (TryGetObject(out Enemy enemy) && TryGetObject(out Smoke smoke))
+                _randomIndex = Random.Range(0, _pool.Count);
+
+                if (TryGetObject(out Enemy enemy, _randomIndex))
                 {
                     int index = Random.Range(0, _spawnPoints.Length);
                     int polarityX = Random.Range(_minSpreadSpawn, _maxSpreadSpawn);
                     int polarityY = Random.Range(_minSpreadSpawn, _maxSpreadSpawn);
 
-                    Vector3 spawnPoint = new Vector3(_spawnPoints[index].transform.position.x + polarityX, _spawnPoints[index].transform.position.y + polarityY);
+                    Vector3 spawnPoint = new Vector3(_spawnPoints[index].transform.position.x + polarityX,
+                        _spawnPoints[index].transform.position.y + polarityY);
 
+                    enemy.Init(_spawnerPlayer.CurrentPlayer);
                     enemy.transform.position = spawnPoint;
                     enemy.gameObject.SetActive(true);
-                    smoke.OnBlowUp(enemy);
+                    _spawnerSmoke.OnSpawned(enemy);
+                    enemy.Died += OnDied;
 
                     _counterSpawnedEnemies++;
                 }
@@ -100,8 +101,10 @@ public class Spawner : ObjectPool
                 }
             }
 
-            _currentSecondBetweenSpawn = Random.Range(_currentMinSecondBetweenSpawn, _currentMaxSecondBetweenSpawn);
-            _enemyCount = Random.Range(_currentMinFrameSpawnNumberEnemy, _currentMaxFrameSpawnNumberEnemy);
+            _currentSecondBetweenSpawn = Random.Range(_currentMinSecondBetweenSpawn,
+                _currentMaxSecondBetweenSpawn);
+            _count = Random.Range(_currentMinFrameSpawnNumberEnemy,
+                _currentMaxFrameSpawnNumberEnemy);
 
             _isSpawn = false;
             _coroutine = StartCoroutine(CountTimeSpawn());
@@ -109,6 +112,24 @@ public class Spawner : ObjectPool
     }
 
     public void Reset()
+    {
+        foreach (var enemy in _pool)
+        {
+            enemy.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnKillAllActive()
+    {
+        var activeEnemies = _pool.Where(enemy => enemy.gameObject.activeSelf == true);
+
+        foreach (var enemy in activeEnemies)
+        {
+            enemy.OnDie();
+        }
+    }
+
+    public void ResetSpawnParameters()
     {
         _currentMaxFrameSpawnNumberEnemy = StartMaxFrameSpawnNumberEnemy;
         _currentMinFrameSpawnNumberEnemy = StartMinFrameSpawnNumberEnemy;
@@ -131,5 +152,11 @@ public class Spawner : ObjectPool
 
             yield return null;
         }
+    }
+
+    private void OnDied(Enemy enemy)
+    {
+        _spawnerBlood.OnDied(enemy);
+        enemy.Died -= OnDied;
     }
 }

@@ -10,7 +10,6 @@ public class PlayerStateMachine : MonoBehaviour
     private Mouse _targetMouse;
     private PlayerState _currentState;
 
-    public Vector3 MousePosition => _targetMouse.transform.position;
     public PlayerState CurrentState => _currentState;
 
     private void Start()

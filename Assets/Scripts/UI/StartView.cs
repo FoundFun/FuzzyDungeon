@@ -40,8 +40,10 @@ public class StartView : View
     protected override void Open()
     {
         base.Open();
-        _dungeonText.gameObject.LeanMoveLocalX(TargetPositionText, DungeonTextSpeedAnimation).setEaseInOutExpo().setIgnoreTimeScale(true);
-        _keeperText.gameObject.LeanMoveLocalX(TargetPositionText, KeeperTextSpeedAnimation).setEaseInOutExpo().setIgnoreTimeScale(true);
+        _dungeonText.gameObject.LeanMoveLocalX(TargetPositionText, DungeonTextSpeedAnimation)
+            .setEaseInOutExpo().setIgnoreTimeScale(true);
+        _keeperText.gameObject.LeanMoveLocalX(TargetPositionText, KeeperTextSpeedAnimation)
+            .setEaseInOutExpo().setIgnoreTimeScale(true);
 
         if (_flickerTextCoroutine != null)
         {
@@ -60,8 +62,10 @@ public class StartView : View
     protected override void Close()
     {
         base.Close();
-        _dungeonText.gameObject.LeanMoveLocalX(-Screen.width, 1).setEaseOutExpo().setIgnoreTimeScale(true);
-        _keeperText.gameObject.LeanMoveLocalX(-Screen.width, 1).setEaseOutExpo().setIgnoreTimeScale(true);
+        _dungeonText.gameObject.LeanMoveLocalX(-Screen.width, 1)
+            .setEaseOutExpo().setIgnoreTimeScale(true);
+        _keeperText.gameObject.LeanMoveLocalX(-Screen.width, 1)
+            .setEaseOutExpo().setIgnoreTimeScale(true);
 
         if (_flickerTextCoroutine != null)
         {
@@ -92,7 +96,8 @@ public class StartView : View
 
         while (true)
         {
-            targetColor.a = Mathf.MoveTowards(targetColor.a, targetAlpha, speed * Time.unscaledDeltaTime);
+            targetColor.a = Mathf.MoveTowards(targetColor.a, targetAlpha,
+                speed * Time.unscaledDeltaTime);
             _clickToPlayText.color = targetColor;
 
             if (targetColor.a == targetAlpha)
@@ -120,7 +125,8 @@ public class StartView : View
 
         while (_audioSource.volume != targetValue)
         {
-            _audioSource.volume = Mathf.Lerp(_audioSource.volume, targetValue, elapsed / LerpDuration);
+            _audioSource.volume = Mathf.Lerp(_audioSource.volume, targetValue,
+                elapsed / LerpDuration);
             elapsed += Time.unscaledDeltaTime;
 
             yield return null;
@@ -134,7 +140,8 @@ public class StartView : View
 
         while (_audioSource.volume != targetValue)
         {
-            _audioSource.volume = Mathf.Lerp(_audioSource.volume, targetValue, elapsed / LerpDuration);
+            _audioSource.volume = Mathf.Lerp(_audioSource.volume, targetValue,
+                elapsed / LerpDuration);
             elapsed += Time.unscaledDeltaTime;
 
             yield return null;

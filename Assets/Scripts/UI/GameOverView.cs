@@ -64,7 +64,8 @@ public class GameOverView : View
 
         while (true)
         {
-            targetColor.a = Mathf.MoveTowards(targetColor.a, targetAlpha, speed * Time.unscaledDeltaTime);
+            targetColor.a = Mathf.MoveTowards(targetColor.a, targetAlpha,
+                speed * Time.unscaledDeltaTime);
             _gameOverLevel.color = targetColor;
 
             if (targetColor.a == targetAlpha)

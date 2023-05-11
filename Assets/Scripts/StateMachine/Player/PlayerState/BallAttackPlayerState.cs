@@ -55,6 +55,7 @@ public class BallAttackPlayerState : PlayerState
 
         _demon.StopAttack();
         _rigidbody2D.velocity = Vector2.zero;
+        _virtualCamera.m_AmplitudeGain = 0;
         _spriteRenderer.enabled = true;
         _puck.gameObject.SetActive(false);
     }
@@ -93,6 +94,7 @@ public class BallAttackPlayerState : PlayerState
     private IEnumerator Attack()
     {
         _spriteRenderer.enabled = false;
+        _puck.transform.position = _demon.transform.position;
         _puck.gameObject.SetActive(true);
 
         Time.timeScale = 0.5f;

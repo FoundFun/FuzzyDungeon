@@ -59,14 +59,18 @@ public abstract class View : MonoBehaviour
 
     private IEnumerator PlayTransitionScene()
     {
-        _loadUp.transform.LeanMoveLocalY(-PositionLoadingImage, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
-        _loadDown.transform.LeanMoveLocalY(PositionLoadingImage, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true).setOnComplete(PlayAudio);
+        _loadUp.transform.LeanMoveLocalY(-PositionLoadingImage, TimeAnimation)
+            .setEaseInCirc().setIgnoreTimeScale(true);
+        _loadDown.transform.LeanMoveLocalY(PositionLoadingImage, TimeAnimation)
+            .setEaseInCirc().setIgnoreTimeScale(true).setOnComplete(PlayAudio);
 
         yield return new WaitForSecondsRealtime(Delay);
 
         PlayAudio();
-        _loadUp.transform.LeanMoveLocalY(Screen.height, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
-        _loadDown.transform.LeanMoveLocalY(-Screen.height, TimeAnimation).setEaseInCirc().setIgnoreTimeScale(true);
+        _loadUp.transform.LeanMoveLocalY(Screen.height, TimeAnimation)
+            .setEaseInCirc().setIgnoreTimeScale(true);
+        _loadDown.transform.LeanMoveLocalY(-Screen.height, TimeAnimation)
+            .setEaseInCirc().setIgnoreTimeScale(true);
     }
 
     private void PlayAudio()
