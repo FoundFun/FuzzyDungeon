@@ -20,6 +20,16 @@ public class Explosion : MonoBehaviour
         _explosionAudio.playOnAwake = true;
     }
 
+    private void OnDisable()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+        }
+
+        _virtualCamera.m_AmplitudeGain = 0;
+    }
+
     public void Init(CinemachineVirtualCamera virtualCamera)
     {
         _virtualCamera = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -28,7 +38,8 @@ public class Explosion : MonoBehaviour
 
     public void OnBlowUp(Player player)
     {
-        Vector2 targetPosition = new Vector2(player.transform.position.x, player.transform.position.y - SpawnPositionY);
+        Vector2 targetPosition = new Vector2(player.transform.position.x,
+            player.transform.position.y - SpawnPositionY);
         gameObject.transform.position = targetPosition;
         gameObject.SetActive(true);
 

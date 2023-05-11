@@ -40,6 +40,7 @@ public class MoveEnemyState : EnemyState
 
     private void LateUpdate()
     {
-        _targetPosition = Vector2.MoveTowards(transform.position, Target.transform.position, _speed * Time.deltaTime);
+        _targetPosition = Vector2.MoveTowards(transform.position,
+            Target.transform.position, _speed * Time.deltaTime);
     }
 }

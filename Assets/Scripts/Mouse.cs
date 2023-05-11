@@ -16,7 +16,9 @@ public class Mouse : MonoBehaviour
     {
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
-        transform.position = new Vector2(Mathf.Clamp(_mousePosition.x, -_clampPositionX, _clampPositionX),
-                                Mathf.Clamp(_mousePosition.y, -_clampPosotionY, _clampPosotionY));
+        transform.position = new Vector2(Mathf.Clamp(_mousePosition.x,
+            -_clampPositionX, _clampPositionX),
+            Mathf.Clamp(_mousePosition.y,
+            -_clampPosotionY, _clampPosotionY));
     }
 }

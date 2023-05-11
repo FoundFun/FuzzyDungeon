@@ -5,7 +5,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [Header("Components")]
     [Tooltip("NeedMoveEnemyState")]
-    [SerializeField] private EnemyState startState;
+    [SerializeField] private EnemyState _startState;
 
     private Enemy _enemy;
     private Player _target;
@@ -18,22 +18,23 @@ public class EnemyStateMachine : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
-    private void Start()
-    {
-        Reset(startState);
-    }
-
     private void OnEnable()
     {
         _target = _enemy.Target;
+
+        if (_currentState != null)
+        {
+            _currentState.Exit();
+        }
+
+        Reset(_startState);
     }
 
     private void OnDisable()
     {
         if (_target != null)
         {
-            _target = _enemy.Target;
-            Transit(startState);
+            Transit(_startState);
         }
     }
 

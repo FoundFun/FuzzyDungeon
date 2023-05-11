@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Demon))]
 [RequireComponent(typeof(Animator))]
@@ -10,15 +11,18 @@ public class SoulsHarvestState : PlayerState
 {
     [SerializeField] private float _propagationSpeed;
 
+    private const float Delay = 1;
+
     private readonly int IsSoulsHarvest = Animator.StringToHash("IsSoulsHarvest");
 
-    private List<Enemy> _enemies = new List<Enemy>();
     private List<Explosion> _explosions = new List<Explosion>();
 
     private Demon _demon;
     private Animator _animator;
     private Coroutine _coroutine;
     private AudioSource _explosionAudio;
+
+    private event UnityAction KillAllEnemies;
 
     private void Awake()
     {
@@ -49,13 +53,14 @@ public class SoulsHarvestState : PlayerState
         _demon.StopAttack();
     }
 
-    public void Init(Explosion explosion, List<Enemy> enemies, CinemachineVirtualCamera virtualCamera)
+    public void Init(Explosion explosion, UnityAction OnKillAllEnemies,
+        CinemachineVirtualCamera virtualCamera)
     {
         Explosion template = Instantiate(explosion);
         template.Init(virtualCamera);
         template.gameObject.SetActive(false);
 
-        _enemies = enemies;
+        KillAllEnemies = OnKillAllEnemies;
         _explosions.Add(template);
     }
 
@@ -63,19 +68,12 @@ public class SoulsHarvestState : PlayerState
     {
         int index = Random.Range(0, _explosions.Count);
 
+        KillAllEnemies?.Invoke();
         _animator.SetBool(IsSoulsHarvest, true);
         _explosions[index].OnBlowUp(_demon);
         _explosionAudio.Play();
 
-        for (int i = 0; i < _enemies.Count; i++)
-        {
-            if (_enemies[i].gameObject.activeSelf == true)
-            {
-                _enemies[i].OnDie();
-            }
-
-            yield return null;
-        }
+        yield return new WaitForSeconds(Delay);
 
         _animator.SetBool(IsSoulsHarvest, false);
     }

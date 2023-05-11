@@ -5,17 +5,20 @@ using UnityEngine;
 public class MovePlayerState : PlayerState
 {
     [Header("Settings")]
-    [SerializeField] private float _speed;
+    [SerializeField] private float _maxSpeed;
 
     private readonly int IsRunHashAnimation = Animator.StringToHash("IsRun");
+
+    private float _smoothTime = 0.05f;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private Vector3 _direction;
+    private Vector2 _currentVelocity;
 
     private void OnValidate()
     {
-        _speed = Mathf.Clamp(_speed, 0, float.MaxValue);
+        _maxSpeed = Mathf.Clamp(_maxSpeed, 0, float.MaxValue);
     }
 
     private void Awake()
@@ -33,25 +36,19 @@ public class MovePlayerState : PlayerState
     {
         if (transform.position != _direction)
         {
-            if (_animator.GetBool(IsRunHashAnimation) == false)
-            {
-                _animator.SetBool(IsRunHashAnimation, true);
-            }
-
+            _animator.SetBool(IsRunHashAnimation, true);
             Move(_direction);
         }
         else
         {
-            if (_animator.GetBool(IsRunHashAnimation) == true)
-            {
-                _animator.SetBool(IsRunHashAnimation, false);
-            }
+            _animator.SetBool(IsRunHashAnimation, false);
         }
     }
 
     private void LateUpdate()
     {
-        _direction = Vector3.MoveTowards(transform.position, TargetMouse.transform.position, _speed * Time.deltaTime);
+        _direction = Vector2.SmoothDamp(transform.position, TargetMouse.transform.position,
+            ref _currentVelocity, _smoothTime, _maxSpeed, Time.deltaTime);
     }
 
     private void Move(Vector2 direction)

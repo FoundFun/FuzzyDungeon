@@ -10,7 +10,7 @@ public abstract class Player : MonoBehaviour
     [SerializeField] private int _health;
 
     private const int MaxHealth = 4;
-    private const float DelayTakeDamage = 2;
+    private const float DelayTakeDamage = 1.3f;
 
     private Vector3 _startPosition = Vector3.zero;
 
@@ -36,6 +36,11 @@ public abstract class Player : MonoBehaviour
     {
         _experience = GetComponent<Experience>();
         Reset();
+    }
+
+    private void OnEnable()
+    {
+        HealthChanged?.Invoke(_currentHealth);
     }
 
     public void SetLevel(int level)

@@ -11,7 +11,7 @@ public class AttackPlayerState : PlayerState
 
     private const float MaxSpeed = 100;
     private const float DashTime = 0.05f;
-    private const float Delay = 0.05f;
+    private const float Delay = 0.1f;
 
     private readonly int IsAttackHashAnimation = Animator.StringToHash("IsAttack");
 

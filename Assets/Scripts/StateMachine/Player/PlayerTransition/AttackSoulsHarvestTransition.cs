@@ -24,7 +24,8 @@ public class AttackSoulsHarvestTransition : PlayerTransition
 
     private void Update()
     {
-        if (_currentTime > DelayAttack && Input.GetKey(KeyCode.E) && _demon.AttackState == false && Time.timeScale != 0)
+        if (_currentTime > DelayAttack && Input.GetKey(KeyCode.E)
+            && _demon.AttackState == false && Time.timeScale != 0)
         {
             _currentTime = 0;
             _darkFill.fillAmount = 1;
@@ -33,7 +34,8 @@ public class AttackSoulsHarvestTransition : PlayerTransition
 
         if (_darkFill.fillAmount != _targetFill)
         {
-            _darkFill.fillAmount = Mathf.MoveTowards(_darkFill.fillAmount, _targetFill, Time.deltaTime / DelayAttack);
+            _darkFill.fillAmount = Mathf.MoveTowards(_darkFill.fillAmount,
+                _targetFill, Time.deltaTime / DelayAttack);
         }
 
         _currentTime += Time.deltaTime;

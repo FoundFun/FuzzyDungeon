@@ -43,6 +43,18 @@ public class Enemy : MonoBehaviour
         _shadowCaster2D.enabled = true;
     }
 
+    private void OnDisable()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(Die());
+        }
+
+        _collider2D.enabled = false;
+        _spriteRenderer.enabled = false;
+        _shadowCaster2D.enabled = false;
+    }
+
     public void Init(Player target)
     {
         _target = target;

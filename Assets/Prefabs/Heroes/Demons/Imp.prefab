@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e5d67bdd676426192bc9e2b17466bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1649284456278481417, guid: d82cfa3befe12441aab5007f366e8e10, type: 3}
   _health: 2
 --- !u!114 &1458838670480309920
 MonoBehaviour:
@@ -196,7 +195,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 3291854226096001542}
   - {fileID: -1742386553254396031}
-  _speed: 5
+  _maxSpeed: 5
 --- !u!114 &3291854226096001542
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,8 @@ public class Game : MonoBehaviour
     [SerializeField] private StartView _startView;
     [SerializeField] private GameOverView _gameOverView;
     [SerializeField] private GameScreen _gameScreen;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private SpawnerPlayer _spawnerPlayer;
+    [SerializeField] private SpawnerEnemy _spawnerEnemy;
     [SerializeField] private TMP_Text _verbalWarningText;
     [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private TMP_Text _targetLevel;
@@ -24,6 +25,7 @@ public class Game : MonoBehaviour
     private const int MaxNumberVerbalWarning = 4;
     private const int StartStepLevel = 2;
     private const int StartCurrentLevel = 1;
+    private const int FactorLevel = 2;
     private const string Slash = "/";
 
     private int _stepLevel = StartStepLevel;
@@ -57,7 +59,9 @@ public class Game : MonoBehaviour
         Time.timeScale = 0;
         _targetLevel.text = _stepLevel.ToString();
         _numberVerbalWarning = 0;
+        _currentIndexPlayer = 0;
         _currentLevel.text = StartCurrentLevel.ToString();
+        _spawnerPlayer.TryGetNext(StartCurrentLevel);
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
     }
@@ -90,9 +94,9 @@ public class Game : MonoBehaviour
         {
             _currentIndexPlayer++;
 
-            if (_spawner.TryGetNextPlayer(currentLevel))
+            if (_spawnerPlayer.TryGetNext(currentLevel))
             {
-                _stepLevel *= 2;
+                _stepLevel *= FactorLevel;
                 _targetLevel.text = _stepLevel.ToString();
             }
             else
@@ -101,7 +105,7 @@ public class Game : MonoBehaviour
             }
         }
 
-        _spawner.ResetEnemy();
+        _spawnerEnemy.Reset();
     }
 
     public void OnHealthBarChanged(int health)
@@ -158,10 +162,10 @@ public class Game : MonoBehaviour
         _verbalWarningText.text = $"{_numberVerbalWarning} {Slash} {MaxNumberVerbalWarning}";
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
-        _spawner.ResetPlayer();
-        _spawner.ResetEnemy();
-        _spawner.Reset();
-        _spawner.TryGetNextPlayer(StartCurrentLevel);
+        _spawnerPlayer.Reset();
+        _spawnerEnemy.Reset();
+        _spawnerEnemy.ResetSpawnParameters();
+        _spawnerPlayer.TryGetNext(StartCurrentLevel);
         DisableAllIcon();
     }
 

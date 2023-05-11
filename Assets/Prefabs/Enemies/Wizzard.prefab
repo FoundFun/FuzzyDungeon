@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18eafe9e026043a88354d96bf454790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: {fileID: 1282180336578924211}
+  _startState: {fileID: 1282180336578924211}
 --- !u!114 &1282180336578924211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 1282180336578924211}
-  AttackTime: 3
+  _attackTime: 3
 --- !u!114 &7643875748257174397
 MonoBehaviour:
   m_ObjectHideFlags: 0

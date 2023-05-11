@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExitAirTransition : PlayerTransition
 {
-    private const float AttackTime = 3f;
+    private const float AttackTime = 2.3f;
 
     private float _elapsedTime;
 

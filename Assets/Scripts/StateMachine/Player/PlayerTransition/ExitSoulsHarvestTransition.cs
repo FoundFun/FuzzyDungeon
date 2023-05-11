@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExitSoulsHarvestTransition : PlayerTransition
 {
-    private const float AttackTime = 1.5f;
+    private const float AttackTime = 2;
 
     private float _elapsedTime;
 
