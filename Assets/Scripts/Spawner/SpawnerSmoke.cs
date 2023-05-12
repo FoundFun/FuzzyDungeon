@@ -19,7 +19,7 @@ public class SpawnerSmoke : ObjectPool<Smoke>
 
         if (TryGetObject(out Smoke smoke, index))
         {
-            smoke.OnBlowUp(enemy);
+            smoke.Play(enemy);
         }
     }
 }

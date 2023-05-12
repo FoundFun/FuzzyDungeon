@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Demon))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(ShadowCaster2D))]
 public class AirAttackPlayerState : PlayerState
 {
+    private const float SpawnPositionY = -1;
     private const float Delay = 1.3f;
 
     private readonly int HashAirAnimation = Animator.StringToHash("IsAirAttack");
 
     private Demon _demon;
+    private ShadowCaster2D _shadowCaster2D;
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
@@ -22,6 +26,7 @@ public class AirAttackPlayerState : PlayerState
     private void Awake()
     {
         _demon = GetComponent<Demon>();
+        _shadowCaster2D = GetComponent<ShadowCaster2D>();
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -49,8 +54,8 @@ public class AirAttackPlayerState : PlayerState
 
     public void Init(Explosion explosion, CinemachineVirtualCamera virtualCamera)
     {
-        Explosion template = Instantiate(explosion);
-        template.Init(virtualCamera);
+        Explosion template = Instantiate(explosion, _demon.transform);
+        template.Init(_demon, virtualCamera);
         template.gameObject.SetActive(false);
 
         _explosions.Add(template);
@@ -61,7 +66,7 @@ public class AirAttackPlayerState : PlayerState
         float explosionDelay = 0.05f;
 
         _animator.SetBool(HashAirAnimation, true);
-
+        _shadowCaster2D.enabled = false;
         Time.timeScale = 0.5f;
 
         yield return new WaitForSeconds(Delay);
@@ -74,6 +79,7 @@ public class AirAttackPlayerState : PlayerState
         yield return new WaitForSeconds(explosionDelay);
 
         int index = Random.Range(0, _explosions.Count);
-        _explosions[index].OnBlowUp(_demon);
+        _explosions[index].Play(_demon, SpawnPositionY);
+        _shadowCaster2D.enabled = true;
     }
 }

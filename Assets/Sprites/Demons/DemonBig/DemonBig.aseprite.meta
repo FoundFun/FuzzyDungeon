@@ -122,8 +122,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 160
-      y: 188
+      x: 194
+      y: 80
       width: 22
       height: 28
     spriteID: 469468d3854bd48cabed93a2b1c341ae
@@ -134,7 +134,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 160, y: 188}
+    uvTransform: {x: 194, y: 80}
   - name: DemonBig_Frame_1
     originalName: 
     pivot: {x: 0.5454545, y: -0.13793103}
@@ -142,8 +142,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 160
-      y: 151
+      x: 194
+      y: 43
       width: 22
       height: 29
     spriteID: 0423702c7a75a4c118771485a0be5e47
@@ -154,7 +154,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 156, y: 147}
+    uvTransform: {x: 190, y: 39}
   - name: DemonBig_Frame_2
     originalName: 
     pivot: {x: 0.5454545, y: 0}
@@ -182,8 +182,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 160
-      y: 115
+      x: 224
+      y: 4
       width: 23
       height: 28
     spriteID: 24d9b47273db14426995c6eafcd2e41e
@@ -194,7 +194,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 156, y: 115}
+    uvTransform: {x: 220, y: 4}
   - name: DemonBig_Frame_4
     originalName: 
     pivot: {x: 0.47826087, y: 0}
@@ -203,7 +203,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 127
-      y: 164
+      y: 86
       width: 23
       height: 30
     spriteID: 2d6e3e8512dbb407a96f55c57cb32682
@@ -214,7 +214,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 122, y: 164}
+    uvTransform: {x: 122, y: 86}
   - name: DemonBig_Frame_5
     originalName: 
     pivot: {x: 0.5217391, y: 0}
@@ -222,8 +222,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 127
-      y: 86
+      x: 160
+      y: 112
       width: 23
       height: 31
     spriteID: 135398194ec5b42fd9fd96fdb8a6a0b9
@@ -234,7 +234,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 123, y: 86}
+    uvTransform: {x: 156, y: 112}
   - name: DemonBig_Frame_6
     originalName: 
     pivot: {x: 0.49999997, y: 0}
@@ -243,7 +243,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 127
-      y: 202
+      y: 162
       width: 22
       height: 31
     spriteID: 331a5429393b84bd79b1765677ef93d3
@@ -254,7 +254,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 122, y: 202}
+    uvTransform: {x: 122, y: 162}
   - name: DemonBig_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -282,8 +282,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 160
-      y: 224
+      x: 224
+      y: 40
       width: 23
       height: 26
     spriteID: 577a8a280dcd94a00aa3ca742fb5bc73
@@ -294,7 +294,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 160, y: 224}
+    uvTransform: {x: 224, y: 40}
   - name: DemonBig_Frame_9
     originalName: 
     pivot: {x: 0.5217391, y: 0}
@@ -302,8 +302,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 127
-      y: 125
+      x: 160
+      y: 151
       width: 23
       height: 31
     spriteID: 2b857b07bab464719a8fa9c822fbf946
@@ -314,7 +314,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 123, y: 125}
+    uvTransform: {x: 156, y: 151}
   - name: DemonBig_Frame_10
     originalName: 
     pivot: {x: 0.5416667, y: 0}
@@ -342,8 +342,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 194
-      y: 4
+      x: 224
+      y: 74
       width: 23
       height: 26
     spriteID: 333bd1c7f8ede45d692a9f4520578fc4
@@ -354,7 +354,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 194, y: 4}
+    uvTransform: {x: 224, y: 74}
   - name: DemonBig_Frame_12
     originalName: 
     pivot: {x: 0.48, y: 0}
@@ -463,7 +463,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 127
-      y: 241
+      y: 240
       width: 7
       height: 3
     spriteID: 51b4b058c533a4c24ae962875cebc07c
@@ -474,7 +474,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 127, y: 241}
+    uvTransform: {x: 127, y: 240}
   - name: DemonBig_Frame_18
     originalName: 
     pivot: {x: 0.49999997, y: 0}
@@ -482,8 +482,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 160
-      y: 76
+      x: 127
+      y: 201
       width: 22
       height: 31
     spriteID: 491b4e144ee4a41b6a836b4a797fea21
@@ -494,7 +494,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 160, y: 76}
+    uvTransform: {x: 127, y: 201}
   - name: DemonBig_Frame_19
     originalName: 
     pivot: {x: 0.49999997, y: 0}
@@ -615,6 +615,86 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 160, y: 40}
+  - name: DemonBig_Frame_25
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 127
+      y: 124
+      width: 23
+      height: 30
+    spriteID: d70f8bd203a3e45d59fe054ebc73e775
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 127, y: 124}
+  - name: DemonBig_Frame_26
+    originalName: 
+    pivot: {x: 0.5217391, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 190
+      width: 23
+      height: 31
+    spriteID: f771ef9f7632a4388b4ce8e39be4cc04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 156, y: 190}
+  - name: DemonBig_Frame_27
+    originalName: 
+    pivot: {x: 0.49999997, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 194
+      y: 4
+      width: 22
+      height: 31
+    spriteID: caad70d34a0424444b643bcb74cb394f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 194, y: 4}
+  - name: DemonBig_Frame_28
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 160
+      y: 76
+      width: 26
+      height: 28
+    spriteID: 919c6948d3a2a4b6bad6325e4ca38506
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 157, y: 76}
   asepriteLayers:
   - layerIndex: 0
     guid: 204594553
@@ -822,6 +902,38 @@ ScriptedImporter:
         width: 26
         height: 28
       spriteId: cd6fe557c60324193b6660ba1e28564f
+    - name: DemonBig_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 2
+        y: 0
+        width: 23
+        height: 30
+      spriteId: d70f8bd203a3e45d59fe054ebc73e775
+    - name: DemonBig_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: -3
+        y: 0
+        width: 32
+        height: 36
+      spriteId: f771ef9f7632a4388b4ce8e39be4cc04
+    - name: DemonBig_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 2
+        y: 0
+        width: 22
+        height: 31
+      spriteId: caad70d34a0424444b643bcb74cb394f
+    - name: DemonBig_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: -3
+        y: 0
+        width: 32
+        height: 36
+      spriteId: 919c6948d3a2a4b6bad6325e4ca38506
     linkedCells: []
     parentIndex: -1
   platformSettings:

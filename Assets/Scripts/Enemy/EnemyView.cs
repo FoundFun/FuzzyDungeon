@@ -15,13 +15,6 @@ public class EnemyView : MonoBehaviour
 
     private void Update()
     {
-        if (_enemy.Target.transform.position.x < transform.position.x)
-        {
-            _sprite.flipX = true;
-        }
-        else
-        {
-            _sprite.flipX = false;
-        }
+        _sprite.flipX = _enemy.Target.transform.position.x < transform.position.x;
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnerPlayer : ObjectPool<Player>

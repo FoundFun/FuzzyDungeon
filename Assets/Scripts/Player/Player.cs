@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Experience))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public abstract class Player : MonoBehaviour
 {
     [Header("Settings")]
@@ -12,20 +14,24 @@ public abstract class Player : MonoBehaviour
     private const int MaxHealth = 4;
     private const float DelayTakeDamage = 1.3f;
 
+    private readonly int HitAnimation = Animator.StringToHash("IsHit");
+
     private Vector3 _startPosition = Vector3.zero;
 
     private Experience _experience;
-    private Coroutine _coroutine;
+    private Animator _animator;
     private Mouse _targetMouse;
+    private AudioSource _audioSource;
+    private Coroutine _coroutine;
     private int _currentHealth;
-
-    public event UnityAction<Player> Died;
-    public event UnityAction<int> HealthChanged;
-    public event UnityAction GameOver;
 
     public Mouse TargetMouse => _targetMouse;
 
     public bool AttackState { get; private set; }
+
+    public event UnityAction<Player> Died;
+    public event UnityAction<int> HealthChanged;
+    public event UnityAction GameOver;
 
     private void OnValidate()
     {
@@ -35,11 +41,22 @@ public abstract class Player : MonoBehaviour
     private void Awake()
     {
         _experience = GetComponent<Experience>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.volume = 1;
         Reset();
     }
 
     private void OnEnable()
     {
+        HealthChanged?.Invoke(_currentHealth);
+    }
+
+    public void Reset()
+    {
+        _experience.Reset();
+        transform.position = _startPosition;
+        _currentHealth = _health;
         HealthChanged?.Invoke(_currentHealth);
     }
 
@@ -51,14 +68,6 @@ public abstract class Player : MonoBehaviour
     public void Init(Mouse target)
     {
         _targetMouse = target;
-    }
-
-    public void Reset()
-    {
-        _experience.Reset();
-        transform.position = _startPosition;
-        _currentHealth = _health;
-        HealthChanged?.Invoke(_currentHealth);
     }
 
     public void Attack()
@@ -75,17 +84,15 @@ public abstract class Player : MonoBehaviour
     {
         if (_coroutine == null)
         {
+            _audioSource.Play();
             _currentHealth -= damage;
             HealthChanged?.Invoke(_currentHealth);
+            _coroutine = StartCoroutine(EnableInvulnerability());
 
             if (_currentHealth <= 0)
             {
                 GameOver?.Invoke();
                 Died?.Invoke(this);
-            }
-            else
-            {
-                _coroutine = StartCoroutine(EnableInvulnerability());
             }
         }
     }
@@ -97,8 +104,11 @@ public abstract class Player : MonoBehaviour
 
     private IEnumerator EnableInvulnerability()
     {
+        _animator.SetBool(HitAnimation, true);
+
         yield return new WaitForSeconds(DelayTakeDamage);
 
+        _animator.SetBool(HitAnimation, false);
         StopCoroutine(_coroutine);
         _coroutine = null;
     }
