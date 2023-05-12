@@ -19,7 +19,7 @@ public class SpawnerBlood : ObjectPool<Blood>
 
         if (TryGetObject(out Blood blood, index))
         {
-            blood.OnDied(enemy);
+            blood.Play(enemy);
         }
     }
 }

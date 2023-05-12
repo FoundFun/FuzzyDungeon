@@ -9,9 +9,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(AudioSource))]
 public class SoulsHarvestState : PlayerState
 {
-    [SerializeField] private float _propagationSpeed;
-
-    private const float Delay = 1;
+    private const float SpawnPositionY = -1;
+    private const float Delay = 0.7f;
 
     private readonly int IsSoulsHarvest = Animator.StringToHash("IsSoulsHarvest");
 
@@ -56,8 +55,8 @@ public class SoulsHarvestState : PlayerState
     public void Init(Explosion explosion, UnityAction OnKillAllEnemies,
         CinemachineVirtualCamera virtualCamera)
     {
-        Explosion template = Instantiate(explosion);
-        template.Init(virtualCamera);
+        Explosion template = Instantiate(explosion, _demon.transform);
+        template.Init(_demon, virtualCamera);
         template.gameObject.SetActive(false);
 
         KillAllEnemies = OnKillAllEnemies;
@@ -70,7 +69,7 @@ public class SoulsHarvestState : PlayerState
 
         KillAllEnemies?.Invoke();
         _animator.SetBool(IsSoulsHarvest, true);
-        _explosions[index].OnBlowUp(_demon);
+        _explosions[index].Play(_demon, SpawnPositionY);
         _explosionAudio.Play();
 
         yield return new WaitForSeconds(Delay);

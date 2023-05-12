@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Experience : MonoBehaviour
 {
     private const int StartLevel = 1;
+    private const int StepTargetLevel = 2;
 
     private int _targetLevel = 10;
 
@@ -46,7 +47,7 @@ public class Experience : MonoBehaviour
 
             if (_level > _targetLevel)
             {
-                _targetLevel *= 2;
+                _targetLevel *= StepTargetLevel;
                 _targetExperience++;
             }
         }

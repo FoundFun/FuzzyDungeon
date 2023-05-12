@@ -20,13 +20,13 @@ public class Enemy : MonoBehaviour
     private Coroutine _coroutine;
     private AudioSource _hitAudio;
 
-    public event UnityAction<Enemy> Died;
-
     public int Damage => _damage;
     public int Experience => _experience;
     public Player Target => _target;
 
     public bool AttackState { get; private set; }
+
+    public event UnityAction<Enemy> Died;
 
     private void Awake()
     {

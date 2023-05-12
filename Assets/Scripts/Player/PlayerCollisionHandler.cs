@@ -10,7 +10,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy enemy) && _player.AttackState == true)
         {

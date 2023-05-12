@@ -137,8 +137,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 100
+      x: 45
+      y: 161
       width: 11
       height: 14
     spriteID: 83375638a157f44e781cb4ca3d01b75c
@@ -149,7 +149,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 100}
+    uvTransform: {x: 42, y: 161}
   - name: Chort_Frame_1
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -157,8 +157,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 45
-      y: 103
+      x: 26
+      y: 161
       width: 11
       height: 18
     spriteID: 86e8935178ba24634bded95d7199416b
@@ -169,7 +169,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 103}
+    uvTransform: {x: 26, y: 161}
   - name: Chort_Frame_2
     originalName: 
     pivot: {x: 0.6333333, y: 0}
@@ -177,7 +177,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
+      x: 45
       y: 4
       width: 15
       height: 23
@@ -189,7 +189,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 4}
+    uvTransform: {x: 45, y: 4}
   - name: Chort_Frame_3
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -197,8 +197,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 111
-      y: 4
+      x: 45
+      y: 183
       width: 11
       height: 14
     spriteID: 4b70d3aa0527a4d5591a2f6d0e306120
@@ -209,7 +209,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 111, y: 4}
+    uvTransform: {x: 45, y: 183}
   - name: Chort_Frame_4
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -217,8 +217,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 27
+      x: 26
+      y: 187
       width: 11
       height: 18
     spriteID: 117daa189ed8448b98cd8558b58170d2
@@ -229,7 +229,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 27}
+    uvTransform: {x: 26, y: 187}
   - name: Chort_Frame_5
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -237,8 +237,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 111
-      y: 26
+      x: 45
+      y: 205
       width: 11
       height: 14
     spriteID: 02127342c4ef242f5a01047312017074
@@ -249,7 +249,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 108, y: 26}
+    uvTransform: {x: 42, y: 205}
   - name: Chort_Frame_6
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -257,8 +257,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 77
+      x: 45
+      y: 115
       width: 11
       height: 15
     spriteID: 27336aa8519e04c76979d50140f8c14b
@@ -269,7 +269,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 77}
+    uvTransform: {x: 42, y: 115}
   - name: Chort_Frame_7
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -277,8 +277,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 95
+      x: 26
+      y: 75
       width: 11
       height: 21
     spriteID: 60ab0c447af5d4bb8b0be0b17946bcb6
@@ -289,7 +289,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 61, y: 95}
+    uvTransform: {x: 23, y: 75}
   - name: Chort_Frame_8
     originalName: 
     pivot: {x: 0.6818182, y: -0.050000004}
@@ -297,8 +297,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 45
-      y: 75
+      x: 26
+      y: 133
       width: 11
       height: 20
     spriteID: 628a1919f2eaa41048f19bd0aa472cd5
@@ -309,7 +309,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 75}
+    uvTransform: {x: 26, y: 133}
   - name: Chort_Frame_9
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -317,8 +317,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 66
+      x: 45
+      y: 35
       width: 14
       height: 21
     spriteID: a9439dc9c849b45de8b1d7ff9b24058d
@@ -329,7 +329,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 64}
+    uvTransform: {x: 44, y: 33}
   - name: Chort_Frame_10
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -337,8 +337,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 104
+      x: 45
+      y: 64
       width: 12
       height: 19
     spriteID: 37e4fd50ed0474b8091d11a37c18a76c
@@ -349,7 +349,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 2, y: 104}
+    uvTransform: {x: 43, y: 64}
   - name: Chort_Frame_11
     originalName: 
     pivot: {x: 0.6818182, y: 0}
@@ -357,8 +357,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 53
+      x: 45
+      y: 91
       width: 11
       height: 16
     spriteID: 77a0127a6d6904513a7e140720ebb3f1
@@ -369,7 +369,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 53}
+    uvTransform: {x: 42, y: 91}
   - name: Chort_Frame_12
     originalName: 
     pivot: {x: 0.59375, y: 0}
@@ -377,7 +377,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
+      x: 68
       y: 4
       width: 16
       height: 15
@@ -389,7 +389,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 4}
+    uvTransform: {x: 68, y: 4}
   - name: Chort_Frame_13
     originalName: 
     pivot: {x: 0.6071428, y: 0}
@@ -397,8 +397,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 64
-      y: 35
+      x: 4
+      y: 218
       width: 14
       height: 23
     spriteID: e484de78b557f4b9a8ecc3e291238711
@@ -409,7 +409,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 64, y: 35}
+    uvTransform: {x: 4, y: 218}
   - name: Chort_Frame_14
     originalName: 
     pivot: {x: 0.5909091, y: 0}
@@ -417,7 +417,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 45
+      x: 26
       y: 4
       width: 11
       height: 63
@@ -429,7 +429,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 45, y: 4}
+    uvTransform: {x: 26, y: 4}
   - name: Chort_Frame_15
     originalName: 
     pivot: {x: 0.6071428, y: 0}
@@ -457,8 +457,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 26
-      y: 4
+      x: 4
+      y: 104
       width: 11
       height: 106
     spriteID: 2d10ea73a699949519e68c6e9b84dfac
@@ -469,7 +469,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 26, y: 4}
+    uvTransform: {x: 4, y: 104}
   - name: Chort_Frame_17
     originalName: 
     pivot: {x: 0.5, y: 0}
@@ -477,8 +477,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 26
-      y: 118
+      x: 4
+      y: 249
       width: 7
       height: 3
     spriteID: a65bdba0f53a147f1a4fb8807179d1b7
@@ -489,7 +489,87 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 26, y: 118}
+    uvTransform: {x: 4, y: 249}
+  - name: Chort_Frame_18
+    originalName: 
+    pivot: {x: 0.6818182, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 213
+      width: 11
+      height: 18
+    spriteID: dd3db8dcff5ed460ab19e03897ddd120
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 26, y: 213}
+  - name: Chort_Frame_19
+    originalName: 
+    pivot: {x: 0.6818182, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 45
+      y: 227
+      width: 11
+      height: 14
+    spriteID: 11587c426d5144a9ba07c1a75423c6e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 227}
+  - name: Chort_Frame_20
+    originalName: 
+    pivot: {x: 0.6818182, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 45
+      y: 138
+      width: 11
+      height: 15
+    spriteID: 853655746dee94c548505b71f6435506
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 45, y: 138}
+  - name: Chort_Frame_21
+    originalName: 
+    pivot: {x: 0.6818182, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 104
+      width: 11
+      height: 21
+    spriteID: bd0ae9d85be1f4abc947c213a5da264e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 23, y: 104}
   asepriteLayers:
   - layerIndex: 0
     guid: 1462753784
@@ -641,6 +721,38 @@ ScriptedImporter:
         width: 7
         height: 3
       spriteId: a65bdba0f53a147f1a4fb8807179d1b7
+    - name: Chort_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 18
+      spriteId: dd3db8dcff5ed460ab19e03897ddd120
+    - name: Chort_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: -1
+        y: 0
+        width: 16
+        height: 24
+      spriteId: 11587c426d5144a9ba07c1a75423c6e5
+    - name: Chort_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 2
+        y: 0
+        width: 11
+        height: 15
+      spriteId: 853655746dee94c548505b71f6435506
+    - name: Chort_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: -1
+        y: 0
+        width: 16
+        height: 24
+      spriteId: bd0ae9d85be1f4abc947c213a5da264e
     linkedCells: []
     parentIndex: -1
   platformSettings:

@@ -84,7 +84,7 @@ public class BallAttackPlayerState : PlayerState
 
     public void Init(Puck puck, CinemachineVirtualCamera virtualCamera)
     {
-        _puck = Instantiate(puck);
+        _puck = Instantiate(puck, _demon.transform);
         _puck.gameObject.SetActive(false);
 
         _virtualCamera = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
