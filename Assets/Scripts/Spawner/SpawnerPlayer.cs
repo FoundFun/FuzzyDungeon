@@ -63,7 +63,6 @@ public class SpawnerPlayer : ObjectPool<Player>
     {
         player.Died += _game.OnDied;
         player.GetComponent<Experience>().LevelChanged += _game.OnLevelChanged;
-        player.GameOver += _game.OnGameOver;
         player.HealthChanged += _game.OnHealthBarChanged;
         player.gameObject.SetActive(true);
     }
@@ -73,7 +72,6 @@ public class SpawnerPlayer : ObjectPool<Player>
         player.gameObject.SetActive(false);
         player.GetComponent<Experience>().LevelChanged -= _game.OnLevelChanged;
         player.HealthChanged -= _game.OnHealthBarChanged;
-        player.GameOver -= _game.OnGameOver;
         player.Died -= _game.OnDied;
     }
 
