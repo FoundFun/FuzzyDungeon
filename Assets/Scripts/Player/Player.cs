@@ -31,7 +31,6 @@ public abstract class Player : MonoBehaviour
 
     public event UnityAction<Player> Died;
     public event UnityAction<int> HealthChanged;
-    public event UnityAction GameOver;
 
     private void OnValidate()
     {
@@ -91,7 +90,6 @@ public abstract class Player : MonoBehaviour
 
             if (_currentHealth <= 0)
             {
-                GameOver?.Invoke();
                 Died?.Invoke(this);
             }
         }
