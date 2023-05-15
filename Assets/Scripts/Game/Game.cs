@@ -30,6 +30,7 @@ public class Game : MonoBehaviour
     private const int StartCurrentLevel = 1;
     private const int FactorLevel = 2;
     private const string Slash = "/";
+    private const string EndLevel = "???";
 
     private Coroutine _coroutine;
     private int _stepLevel = StartStepLevel;
@@ -219,7 +220,7 @@ public class Game : MonoBehaviour
         }
         else
         {
-            _targetLevel.text = "???";
+            _targetLevel.text = EndLevel;
         }
 
         _spawnerEnemy.Reset();
