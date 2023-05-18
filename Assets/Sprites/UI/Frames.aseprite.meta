@@ -41,7 +41,7 @@ ScriptedImporter:
     generateCubemap: 6
     cubemapConvolution: 0
     seamlessCubemap: 0
-    alphaIsTransparency: 1
+    alphaIsTransparency: 0
     spriteTessellationDetail: -1
     textureType: 8
     textureShape: 1
@@ -71,27 +71,31 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638199280332537350
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -114,7 +118,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  multiSpriteImportData:
+  animatedSpriteImportData:
   - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 2"
     originalName: 
     pivot: {x: -0.20833331, y: -6.5000005}
@@ -315,12 +319,14 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 16, y: 33}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     guid: 665421131
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 2"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 2"
       frameIndex: 0
@@ -337,6 +343,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 3"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 3"
       frameIndex: 0
@@ -353,6 +360,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 4"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 4"
       frameIndex: 0
@@ -369,6 +377,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 5"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 5"
       frameIndex: 0
@@ -385,6 +394,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 6"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 6"
       frameIndex: 0
@@ -401,6 +411,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 7"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 7"
       frameIndex: 0
@@ -417,6 +428,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 8"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 8"
       frameIndex: 0
@@ -433,6 +445,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 9"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 9"
       frameIndex: 0
@@ -449,6 +462,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 10"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 10"
       frameIndex: 0
@@ -465,6 +479,7 @@ ScriptedImporter:
     name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 11"
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: "\xD0\xA1\xD0\xBB\xD0\xBE\xD0\xB9 11"
       frameIndex: 0
@@ -479,7 +494,7 @@ ScriptedImporter:
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -556,3 +571,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
+  canvasSize: {x: 126, y: 90}

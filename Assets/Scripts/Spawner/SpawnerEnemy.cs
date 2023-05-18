@@ -11,16 +11,16 @@ public class SpawnerEnemy : ObjectPool<Enemy>
     [SerializeField] private SpawnerSmoke _spawnerSmoke;
     [SerializeField] private SpawnerBlood _spawnerBlood;
 
-    private const float StartMaxSecondBetweenSpawn = 7;
-    private const float StartMinSecondBetweenSpawn = 1;
-    private const int StartMaxFrameSpawnNumberEnemy = 6;
+    private const float StartMaxSecondBetweenSpawn = 10;
+    private const float StartMinSecondBetweenSpawn = 2;
+    private const int StartMaxFrameSpawnNumberEnemy = 3;
     private const int StartMinFrameSpawnNumberEnemy = 1;
 
     private float _currentSecondBetweenSpawn = 5;
     private int _maxSpreadSpawn = 2;
     private int _minSpreadSpawn = -1;
     private int _spawnAcceleration = 1;
-    private int _targetSpawnedEnemies = 20;
+    private int _targetSpawnedEnemies = 5;
     private bool _isSpawn = false;
 
     private SpawnPoint[] _spawnPoints;

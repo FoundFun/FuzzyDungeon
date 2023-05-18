@@ -19,7 +19,6 @@ public class AttackPlayerState : PlayerState
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
-    private float _currentTimeAttack;
 
     private void OnValidate()
     {
@@ -61,17 +60,11 @@ public class AttackPlayerState : PlayerState
 
         _player.Attack();
 
-        _currentTimeAttack = 0;
-
         Vector2 direction = (TargetMouse.transform.position - transform.position).normalized;
 
-        while (_currentTimeAttack < DashTime)
-        {
-            _currentTimeAttack += Time.deltaTime;
-            _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * _dashSpeed;
+        _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * _dashSpeed;
 
-            yield return null;
-        }
+        yield return new WaitForSeconds(DashTime);
 
         _rigidbody2D.velocity = Vector2.zero;
         _animator.SetBool(IsAttackHashAnimation, false);

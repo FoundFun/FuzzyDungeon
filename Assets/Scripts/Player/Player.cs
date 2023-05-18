@@ -51,6 +51,15 @@ public abstract class Player : MonoBehaviour
         HealthChanged?.Invoke(_currentHealth);
     }
 
+    private void OnDisable()
+    {
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+    }
+
     public void Reset()
     {
         _experience.Reset();

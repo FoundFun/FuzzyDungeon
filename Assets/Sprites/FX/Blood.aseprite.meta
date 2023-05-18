@@ -9,7 +9,7 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
   textureImporterSettings:
-    alphaSource: 1
+    alphaSource: 0
     mipMapMode: 0
     enableMipMap: 0
     fadeOut: 0
@@ -41,7 +41,7 @@ ScriptedImporter:
     generateCubemap: 6
     cubemapConvolution: 0
     seamlessCubemap: 0
-    alphaIsTransparency: 1
+    alphaIsTransparency: 0
     spriteTessellationDetail: -1
     textureType: 8
     textureShape: 1
@@ -71,27 +71,31 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.5, y: 0.1}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.5, y: 0.1}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638200093682152730
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -114,7 +118,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  multiSpriteImportData:
+  animatedSpriteImportData:
   - name: Blood_Frame_0
     originalName: 
     pivot: {x: 0.5294118, y: -0.39999998}
@@ -295,12 +299,14 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 340}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     guid: 893377442
     name: Blood
     layerFlags: 0
     layerType: 0
+    blendMode: 0
     cells:
     - name: Blood_Frame_0
       frameIndex: 0
@@ -379,7 +385,7 @@ ScriptedImporter:
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -456,3 +462,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
+  canvasSize: {x: 128, y: 128}

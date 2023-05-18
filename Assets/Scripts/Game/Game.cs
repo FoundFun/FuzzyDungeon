@@ -22,11 +22,12 @@ public class Game : MonoBehaviour
     [SerializeField] private DarkFill _darkFillSecondSpell;
     [SerializeField] private DarkFill _darkFillThirdSpell;
     [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private Yandex _yandex;
 
     private const float DelayReset = 2;
     private const float DelayRespawn = 1;
     private const int MaxNumberVerbalWarning = 4;
-    private const int StartStepLevel = 2;
+    private const int StartStepLevel = 20;
     private const int StartCurrentLevel = 1;
     private const int FactorLevel = 2;
     private const string Slash = "/";
@@ -44,7 +45,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 59;
+        _yandex.OnShowAds();
     }
 
     private void OnEnable()
@@ -73,7 +74,7 @@ public class Game : MonoBehaviour
 
     private IEnumerator Reset()
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.3f;
 
         yield return new WaitForSecondsRealtime(DelayReset);
 
@@ -87,13 +88,14 @@ public class Game : MonoBehaviour
         _gameScreen.OnStopMusic();
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
+        _yandex.OnShowAds();
 
         yield return new WaitForSecondsRealtime(DelayRespawn);
 
         _spawnerPlayer.Reset();
+        _spawnerPlayer.TryGetNext(StartCurrentLevel);
         _spawnerEnemy.Reset();
         _spawnerEnemy.ResetSpawnParameters();
-        _spawnerPlayer.TryGetNext(StartCurrentLevel);
         DisableAllIcon();
     }
 
@@ -184,7 +186,7 @@ public class Game : MonoBehaviour
 
     private IEnumerator OnRestart(Player player, int currentLevel)
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.3f;
 
         yield return new WaitForSecondsRealtime(DelayReset);
 
@@ -201,7 +203,7 @@ public class Game : MonoBehaviour
 
     private IEnumerator OnNextLevel(int currentLevel)
     {
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.3f;
 
         yield return new WaitForSecondsRealtime(DelayReset);
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8766576449471358941}
   - component: {fileID: 3727381675489593667}
   - component: {fileID: 1476407395554623440}
-  - component: {fileID: 2903472972063015350}
   - component: {fileID: 3323257029853829263}
   - component: {fileID: 4329669734868929084}
   - component: {fileID: 447555563987337583}
@@ -33,7 +32,7 @@ GameObject:
   - component: {fileID: 9221593199321223897}
   - component: {fileID: 4760345535830708054}
   - component: {fileID: 8715063584970721870}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DemonBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,36 +199,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2903472972063015350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943416991517330001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.35737443, y: 0.26863366, z: 0}
-  - {x: -0.3274324, y: 1.4681251, z: 0}
-  - {x: 0.4086938, y: 1.4653921, z: 0}
-  - {x: 0.41489553, y: 0.28524894, z: 0}
-  m_ShapePathHash: -612083603
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 1189586
-  m_LocalBounds:
-    m_Center: {x: 0.028760552, y: 0.8683794, z: 0}
-    m_Extent: {x: 0.38613498, y: 0.59974575, z: 0}
 --- !u!114 &3323257029853829263
 MonoBehaviour:
   m_ObjectHideFlags: 0
