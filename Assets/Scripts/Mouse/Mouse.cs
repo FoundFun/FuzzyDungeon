@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
-    private const float _clampPositionX = 13.5f;
-    private const float _clampPosotionY = 8;
+    private const float _clampPositionX = 12.5f;
+    private const float _clampPosotionY = 7.5f;
 
     private Vector3 _mousePosition;
 

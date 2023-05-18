@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2315409195719182728}
   - component: {fileID: 2044964583515675156}
   - component: {fileID: 3501596720912383698}
-  - component: {fileID: 3214678536002221739}
   - component: {fileID: 6522012317410275188}
   - component: {fileID: 1624643107279471425}
   - component: {fileID: 6225663549151218248}
@@ -30,7 +29,7 @@ GameObject:
   - component: {fileID: 7904736358785397972}
   - component: {fileID: 3365115466547845407}
   - component: {fileID: 7132510060278678155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,36 +196,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7338128, y: 1.1226524}
   m_EdgeRadius: 0
---- !u!114 &3214678536002221739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537320100867956313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.32256484, y: 0.124993086, z: 0}
-  - {x: -0.33032155, y: 0.88336176, z: 0}
-  - {x: 0.09679484, y: 0.88481593, z: 0}
-  - {x: 0.094953775, y: 0.123360336, z: 0}
-  m_ShapePathHash: 757978377
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 1190060
-  m_LocalBounds:
-    m_Center: {x: -0.11676335, y: 0.50408816, z: 0}
-    m_Extent: {x: 0.2135582, y: 0.3807278, z: 0}
 --- !u!114 &6522012317410275188
 MonoBehaviour:
   m_ObjectHideFlags: 0

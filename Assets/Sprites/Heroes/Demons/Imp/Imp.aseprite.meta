@@ -41,7 +41,7 @@ ScriptedImporter:
     generateCubemap: 6
     cubemapConvolution: 0
     seamlessCubemap: 0
-    alphaIsTransparency: 1
+    alphaIsTransparency: 0
     spriteTessellationDetail: -1
     textureType: 8
     textureShape: 1
@@ -71,27 +71,31 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638199272711875870
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -114,10 +118,10 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  multiSpriteImportData:
+  animatedSpriteImportData:
   - name: Imp_Frame_0
     originalName: 
-    pivot: {x: 0.55, y: -0.08333333}
+    pivot: {x: 0.55, y: -0.083333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -137,7 +141,7 @@ ScriptedImporter:
     uvTransform: {x: 63, y: 102}
   - name: Imp_Frame_1
     originalName: 
-    pivot: {x: 0.55, y: -0.090909086}
+    pivot: {x: 0.55, y: -0.09090909}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -197,7 +201,7 @@ ScriptedImporter:
     uvTransform: {x: 85, y: 87}
   - name: Imp_Frame_4
     originalName: 
-    pivot: {x: 0.55, y: -0.16666666}
+    pivot: {x: 0.55, y: -0.16666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -295,7 +299,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 59, y: 43}
-  - name: Imp_Frame_11
+  - name: Imp_Frame_9
     originalName: 
     pivot: {x: 0.5, y: -0.1}
     alignment: 9
@@ -315,7 +319,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 26, y: 114}
-  - name: Imp_Frame_9
+  - name: Imp_Frame_10
     originalName: 
     pivot: {x: 0.53571427, y: -0.11111111}
     alignment: 9
@@ -335,7 +339,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 63, y: 85}
-  - name: Imp_Frame_10
+  - name: Imp_Frame_11
     originalName: 
     pivot: {x: 0.55, y: -0.07692308}
     alignment: 9
@@ -555,12 +559,14 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 110, y: 4}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
     guid: 1601465652
     name: Imp
     layerFlags: 0
     layerType: 0
+    blendMode: 0
     cells:
     - name: Imp_Frame_0
       frameIndex: 0
@@ -743,7 +749,7 @@ ScriptedImporter:
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -820,3 +826,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
+  canvasSize: {x: 17, y: 102}

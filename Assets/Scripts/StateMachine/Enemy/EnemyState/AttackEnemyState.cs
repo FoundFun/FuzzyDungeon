@@ -65,13 +65,10 @@ public class AttackEnemyState : EnemyState
 
         _animator.SetBool(_isAttackHashAnimation, true);
 
-        while (Vector3.Distance(startPosition, transform.position) < _dashLength)
-        {
-            _enemy.Attack();
-            _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * _dashSpeed;
+        _enemy.Attack();
+        _rigidbody2D.velocity = new Vector2(direction.x, direction.y) * _dashSpeed;
 
-            yield return null;
-        }
+        yield return new WaitWhile(() => Vector3.Distance(startPosition, transform.position) < _dashLength);
 
         _rigidbody2D.velocity = Vector2.zero;
         _animator.SetBool(_isAttackHashAnimation, false);

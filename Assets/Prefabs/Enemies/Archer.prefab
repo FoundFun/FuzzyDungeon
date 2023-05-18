@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9034797425798541725}
   - component: {fileID: 8731294150171101609}
   - component: {fileID: 8198364638443550315}
-  - component: {fileID: -1042831432318323276}
   - component: {fileID: 7583857404942777076}
   - component: {fileID: 9034797425798541697}
   - component: {fileID: 5163277820340139211}
@@ -23,7 +22,7 @@ GameObject:
   - component: {fileID: 619127596033796944}
   - component: {fileID: 7643875748257174397}
   - component: {fileID: 6014743999022507458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +140,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -190,36 +189,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1993501, y: 1.4243276}
   m_EdgeRadius: 0
---- !u!114 &-1042831432318323276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9034797425798541724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.14718387, y: 0.17668936, z: 0}
-  - {x: -0.23832944, y: 0.89632374, z: 0}
-  - {x: 0.4332354, y: 0.9022451, z: 0}
-  - {x: 0.39774302, y: 0.19209194, z: 0}
-  m_ShapePathHash: -405895096
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 119526
-  m_LocalBounds:
-    m_Center: {x: 0.09745297, y: 0.5394672, z: 0}
-    m_Extent: {x: 0.3357824, y: 0.3627779, z: 0}
 --- !u!114 &7583857404942777076
 MonoBehaviour:
   m_ObjectHideFlags: 0

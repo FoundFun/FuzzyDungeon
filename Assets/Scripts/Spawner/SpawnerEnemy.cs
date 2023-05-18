@@ -13,7 +13,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
 
     private const float StartMaxSecondBetweenSpawn = 7;
     private const float StartMinSecondBetweenSpawn = 1;
-    private const int StartMaxFrameSpawnNumberEnemy = 6;
+    private const int StartMaxFrameSpawnNumberEnemy = 4;
     private const int StartMinFrameSpawnNumberEnemy = 1;
 
     private float _currentSecondBetweenSpawn = 5;

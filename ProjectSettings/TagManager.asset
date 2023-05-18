@@ -11,9 +11,9 @@ TagManager:
   - PostProcessing
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Wall
   - 
   - 
   - 
