@@ -19,7 +19,6 @@ public class AttackPlayerState : PlayerState
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private Coroutine _coroutine;
-    private float _currentTimeAttack;
 
     private void OnValidate()
     {
@@ -60,8 +59,6 @@ public class AttackPlayerState : PlayerState
         yield return new WaitForSeconds(Delay);
 
         _player.Attack();
-
-        _currentTimeAttack = 0;
 
         Vector2 direction = (TargetMouse.transform.position - transform.position).normalized;
 

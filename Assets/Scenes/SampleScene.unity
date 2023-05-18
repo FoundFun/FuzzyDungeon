@@ -2355,7 +2355,7 @@ MonoBehaviour:
   _darkFillSecondSpell: {fileID: 1061404961}
   _darkFillThirdSpell: {fileID: 116409515}
   _healthBar: {fileID: 1450357284}
-  _yandex: {fileID: 0}
+  _yandex: {fileID: 82358029}
 --- !u!114 &519420038
 MonoBehaviour:
   m_ObjectHideFlags: 0

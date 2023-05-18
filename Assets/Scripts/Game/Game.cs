@@ -88,6 +88,7 @@ public class Game : MonoBehaviour
         _gameScreen.OnStopMusic();
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
+        _yandex.OnShowAds();
 
         yield return new WaitForSecondsRealtime(DelayRespawn);
 

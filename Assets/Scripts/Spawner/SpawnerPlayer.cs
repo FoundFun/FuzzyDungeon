@@ -41,6 +41,11 @@ public class SpawnerPlayer : ObjectPool<Player>
             nextPlayer.SetLevel(currentLevel);
             EnablePlayer(nextPlayer);
             SetCurrentSpells(nextPlayer);
+
+            if (_game.CurrentIndexPlayer > 0)
+            {
+                DisablePlayer(_pool[_game.CurrentIndexPlayer - 1]);
+            }
         }
 
         return _game.CurrentIndexPlayer < _pool.Count - 1;
