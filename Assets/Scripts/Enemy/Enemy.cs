@@ -1,86 +1,89 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Players;
 
-[RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(AudioSource))]
-public class Enemy : MonoBehaviour
+namespace Enemies
 {
-    [Header("Settings")]
-    [SerializeField] private int _damage;
-    [SerializeField] private int _experience;
-
-    private Player _target;
-    private Collider2D _collider2D;
-    private SpriteRenderer _spriteRenderer;
-    private Coroutine _coroutine;
-    private AudioSource _hitAudio;
-
-    public int Damage => _damage;
-    public int Experience => _experience;
-    public Player Target => _target;
-
-    public bool AttackState { get; private set; }
-
-    public event UnityAction<Enemy> Died;
-
-    private void Awake()
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(AudioSource))]
+    public class Enemy : MonoBehaviour
     {
-        _hitAudio = GetComponent<AudioSource>();
-        _collider2D = GetComponent<Collider2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+        [SerializeField] private int _damage;
+        [SerializeField] private int _experience;
 
-    private void OnEnable()
-    {
-        _collider2D.enabled = true;
-        _spriteRenderer.enabled = true;
-    }
+        private Player _target;
+        private Collider2D _collider2D;
+        private SpriteRenderer _spriteRenderer;
+        private Coroutine _coroutine;
+        private AudioSource _hitAudio;
 
-    private void OnDisable()
-    {
-        if (_coroutine != null)
-            StopCoroutine(Die());
+        public int Damage => _damage;
+        public int Experience => _experience;
+        public Player Target => _target;
 
-        _collider2D.enabled = false;
-        _spriteRenderer.enabled = false;
-    }
+        public bool AttackState { get; private set; }
 
-    public void Init(Player target)
-    {
-        _target = target;
-    }
+        public event UnityAction<Enemy> Died;
 
-    public void Attack()
-    {
-        AttackState = true;
-    }
+        private void Awake()
+        {
+            _hitAudio = GetComponent<AudioSource>();
+            _collider2D = GetComponent<Collider2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
-    public void StopAttack()
-    {
-        AttackState = false;
-    }
+        private void OnEnable()
+        {
+            _collider2D.enabled = true;
+            _spriteRenderer.enabled = true;
+        }
 
-    public void OnDie()
-    {
-        Died?.Invoke(this);
+        private void OnDisable()
+        {
+            if (_coroutine != null)
+                StopCoroutine(Die());
 
-        if (_coroutine != null)
-            StopCoroutine(Die());
+            _collider2D.enabled = false;
+            _spriteRenderer.enabled = false;
+        }
 
-        _coroutine = StartCoroutine(Die());
-    }
+        public void Init(Player target)
+        {
+            _target = target;
+        }
 
-    private IEnumerator Die()
-    {
-        _hitAudio.Play();
+        public void Attack()
+        {
+            AttackState = true;
+        }
 
-        _collider2D.enabled = false;
-        _spriteRenderer.enabled = false;
+        public void StopAttack()
+        {
+            AttackState = false;
+        }
 
-        yield return new WaitForSeconds(_hitAudio.clip.length);
+        public void OnDie()
+        {
+            Died?.Invoke(this);
 
-        gameObject.SetActive(false);
+            if (_coroutine != null)
+                StopCoroutine(Die());
+
+            _coroutine = StartCoroutine(Die());
+        }
+
+        private IEnumerator Die()
+        {
+            _hitAudio.Play();
+
+            _collider2D.enabled = false;
+            _spriteRenderer.enabled = false;
+
+            yield return new WaitForSeconds(_hitAudio.clip.length);
+
+            gameObject.SetActive(false);
+        }
     }
 }

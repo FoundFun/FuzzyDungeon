@@ -1,5 +1,7 @@
 using UnityEngine;
 using Cinemachine;
+using Players;
+using Enemies;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Collider2D))]

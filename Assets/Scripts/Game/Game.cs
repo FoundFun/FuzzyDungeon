@@ -3,10 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Players;
 
 public class Game : MonoBehaviour
 {
-    [Header("Components")]
     [SerializeField] private Image[] _playerIcon;
     [SerializeField] private StartView _startView;
     [SerializeField] private GameOverView _gameOverView;

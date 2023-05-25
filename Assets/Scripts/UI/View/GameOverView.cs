@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class GameOverView : View
 {
-    [Header("Components")]
     [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private TMP_Text _gameOverLevel;
 
