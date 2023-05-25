@@ -31,9 +31,7 @@ public class AirAttackPlayerState : PlayerState
     private void OnEnable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _demon.Attack();
         _coroutine = StartCoroutine(Attack());
@@ -42,9 +40,7 @@ public class AirAttackPlayerState : PlayerState
     private void OnDisable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _demon.StopAttack();
     }

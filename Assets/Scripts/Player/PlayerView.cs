@@ -16,9 +16,7 @@ public class PlayerView : MonoBehaviour
     private void Update()
     {
         if (_player.AttackState == false)
-        {
             FlipSprite(_player.TargetMouse.transform.position);
-        }
     }
 
     private void FlipSprite(Vector3 targetMousePosition)

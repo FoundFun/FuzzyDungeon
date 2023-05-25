@@ -26,9 +26,7 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         gameObject = _poolObject.ElementAtOrDefault(indexElement);
 
         if (gameObject.gameObject.activeSelf == true)
-        {
             gameObject = null;
-        }
 
         return gameObject != null;
     }

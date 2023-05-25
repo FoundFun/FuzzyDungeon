@@ -13,8 +13,6 @@ public class Puck : MonoBehaviour
     public void HitWall()
     {
         if (gameObject.activeSelf == true)
-        {
             _swishAudio.Play();
-        }
     }
 }

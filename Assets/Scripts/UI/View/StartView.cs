@@ -40,20 +40,17 @@ public class StartView : View
     protected override void Open()
     {
         base.Open();
+
         _dungeonText.gameObject.LeanMoveLocalX(TargetPositionText, DungeonTextSpeedAnimation)
             .setEaseInOutExpo().setIgnoreTimeScale(true);
         _keeperText.gameObject.LeanMoveLocalX(TargetPositionText, KeeperTextSpeedAnimation)
             .setEaseInOutExpo().setIgnoreTimeScale(true);
 
         if (_flickerTextCoroutine != null)
-        {
             StopCoroutine(_flickerTextCoroutine);
-        }
 
         if (_musicCoroutine != null)
-        {
             StopCoroutine(_musicCoroutine);
-        }
 
         _musicCoroutine = StartCoroutine(PlayMusic());
         _flickerTextCoroutine = StartCoroutine(Flicker());
@@ -62,20 +59,17 @@ public class StartView : View
     protected override void Close()
     {
         base.Close();
+
         _dungeonText.gameObject.LeanMoveLocalX(-Screen.width, 1)
             .setEaseOutExpo().setIgnoreTimeScale(true);
         _keeperText.gameObject.LeanMoveLocalX(-Screen.width, 1)
             .setEaseOutExpo().setIgnoreTimeScale(true);
 
         if (_flickerTextCoroutine != null)
-        {
             StopCoroutine(_flickerTextCoroutine);
-        }
 
         if (_musicCoroutine != null)
-        {
             StopCoroutine(_musicCoroutine);
-        }
 
         _musicCoroutine = StartCoroutine(StopMusic());
     }

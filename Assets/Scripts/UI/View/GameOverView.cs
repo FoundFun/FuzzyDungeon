@@ -28,12 +28,11 @@ public class GameOverView : View
     protected override void Open()
     {
         base.Open();
+
         _gameOverLevel.text = CurrentLevelText + _currentLevel.text;
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(Flicker());
     }
@@ -43,9 +42,7 @@ public class GameOverView : View
         base.Close();
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
     }
 
     protected override void OnPlayGameButtonClick()
@@ -69,9 +66,7 @@ public class GameOverView : View
             _gameOverLevel.color = targetColor;
 
             if (targetColor.a == targetAlpha)
-            {
                 targetAlpha = targetAlpha == 1 ? 0 : 1;
-            }
 
             yield return null;
         }

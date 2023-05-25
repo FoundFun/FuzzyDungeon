@@ -32,9 +32,7 @@ public abstract class View : MonoBehaviour
     protected virtual void Open()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(PlayTransitionScene());
 
@@ -46,9 +44,7 @@ public abstract class View : MonoBehaviour
     protected virtual void Close()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(PlayTransitionScene());
 

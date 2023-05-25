@@ -33,9 +33,7 @@ public class BallAttackPlayerState : PlayerState
     private void OnEnable()
     {
         if (_attackCoroutine != null)
-        {
             StopCoroutine(_attackCoroutine);
-        }
 
         _demon.Attack();
         _attackCoroutine = StartCoroutine(Attack());
@@ -44,14 +42,10 @@ public class BallAttackPlayerState : PlayerState
     private void OnDisable()
     {
         if (_attackCoroutine != null)
-        {
             StopCoroutine(_attackCoroutine);
-        }
 
         if (_shakingCoroutine != null)
-        {
             StopCoroutine(_shakingCoroutine);
-        }
 
         _demon.StopAttack();
         _rigidbody2D.velocity = Vector2.zero;
@@ -73,9 +67,7 @@ public class BallAttackPlayerState : PlayerState
         _virtualCamera.m_AmplitudeGain = 0.5f;
 
         if (_shakingCoroutine != null)
-        {
             StopCoroutine(_shakingCoroutine);
-        }
 
         _shakingCoroutine = StartCoroutine(HitWall());
         _puck.HitWall();

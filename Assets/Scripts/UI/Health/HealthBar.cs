@@ -15,18 +15,14 @@ public class HealthBar : MonoBehaviour
             int createHearts = value - _hearts.Count;
 
             for (int i = 0; i < createHearts; i++)
-            {
                 CreateHeart(_heart, i);
-            }
         }
         else if (_hearts.Count > value && _hearts.Count != 0)
         {
             int deleteHearts = _hearts.Count - value;
 
             for (int i = 0; i < deleteHearts; i++)
-            {
                 DestroyHeart(_hearts[_hearts.Count - 1]);
-            }
         }
     }
 

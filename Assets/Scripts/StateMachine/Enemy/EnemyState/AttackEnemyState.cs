@@ -41,9 +41,7 @@ public class AttackEnemyState : EnemyState
     private void OnEnable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(Attack(Target));
     }
@@ -51,9 +49,7 @@ public class AttackEnemyState : EnemyState
     private void OnDisable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
     }
 
     private IEnumerator Attack(Player target)

@@ -32,10 +32,8 @@ public class AttackEnemyTransition : EnemyTransition
     {
         _delay += Time.deltaTime;
 
-        if (Vector2.Distance(transform.position, Target.transform.position) <= _transitionRange
-            && _delay > AttackTime)
-        {
-            NeedTransit = true;
-        }
+        if (Vector2.Distance(transform.position, Target.transform.position)
+            <= _transitionRange && _delay > AttackTime)
+                NeedTransit = true;
     }
 }

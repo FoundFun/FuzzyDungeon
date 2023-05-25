@@ -21,17 +21,13 @@ public class Explosion : Effect<Player>
     private void OnEnable()
     {
         if (_virtualCamera != null)
-        {
             _virtualCamera.m_AmplitudeGain = IntensityShaking;
-        }
     }
 
     private void OnDisable()
     {
         if (_virtualCamera != null)
-        {
             _virtualCamera.m_AmplitudeGain = 0;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -21,9 +21,7 @@ public abstract class Effect<T> : MonoBehaviour where T : MonoBehaviour
         gameObject.gameObject.SetActive(true);
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(Disable());
     }

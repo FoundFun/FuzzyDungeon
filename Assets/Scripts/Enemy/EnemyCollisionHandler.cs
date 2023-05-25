@@ -15,9 +15,7 @@ public class EnemyCollisionHandler : MonoBehaviour
         if (collision.TryGetComponent(out Player player) && _enemy.AttackState == true)
         {
             if (player.AttackState == false)
-            {
                 player.TakeDamage(_enemy.Damage);
-            }
         }
     }
 }

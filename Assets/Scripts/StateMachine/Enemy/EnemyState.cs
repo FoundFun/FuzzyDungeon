@@ -28,9 +28,7 @@ public abstract class EnemyState : MonoBehaviour
         foreach (var transition in _transitions)
         {
             if (transition.NeedTransit)
-            {
                 return transition.TargetState;
-            }
         }
 
         return null;
@@ -41,9 +39,7 @@ public abstract class EnemyState : MonoBehaviour
         if (enabled == true)
         {
             foreach (var transition in _transitions)
-            {
                 transition.enabled = false;
-            }
 
             enabled = false;
         }

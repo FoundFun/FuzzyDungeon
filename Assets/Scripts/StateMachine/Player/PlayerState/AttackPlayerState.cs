@@ -35,9 +35,7 @@ public class AttackPlayerState : PlayerState
     private void OnEnable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(Attack());
     }
@@ -45,9 +43,7 @@ public class AttackPlayerState : PlayerState
     private void OnDisable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         StopCoroutine(_coroutine);
     }

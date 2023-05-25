@@ -98,9 +98,7 @@ public abstract class Player : MonoBehaviour
             _coroutine = StartCoroutine(EnableInvulnerability());
 
             if (_currentHealth <= 0)
-            {
                 Died?.Invoke(this);
-            }
         }
     }
 
