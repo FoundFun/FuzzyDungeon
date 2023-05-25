@@ -110,9 +110,7 @@ public class Game : MonoBehaviour
         int targetLevel = GetLevel(_targetLevel);
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         if (currentLevel < targetLevel)
         {
@@ -171,17 +169,13 @@ public class Game : MonoBehaviour
     private void EnableNextIcon()
     {
         if (_playerIcon.Length > _currentIndexPlayer && _currentIndexPlayer >= 0)
-        {
             _playerIcon[_currentIndexPlayer].gameObject.SetActive(true);
-        }
     }
 
     private void DisableAllIcon()
     {
         foreach (var icon in _playerIcon)
-        {
             icon.gameObject.SetActive(false);
-        }
     }
 
     private IEnumerator OnRestart(Player player, int currentLevel)

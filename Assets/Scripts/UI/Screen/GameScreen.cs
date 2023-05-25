@@ -18,9 +18,7 @@ public class GameScreen : MonoBehaviour
     public void OnPlayMusic()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(PlayMusic());
     }
@@ -28,9 +26,7 @@ public class GameScreen : MonoBehaviour
     public void OnStopMusic()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(StopMusic());
     }

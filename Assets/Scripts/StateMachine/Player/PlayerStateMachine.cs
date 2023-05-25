@@ -21,16 +21,12 @@ public class PlayerStateMachine : MonoBehaviour
     private void Update()
     {
         if (_currentState == null)
-        {
             return;
-        }
 
         var nextState = _currentState.GetNextState();
 
         if (nextState != null)
-        {
             Transit(nextState);
-        }
     }
 
     private void Reset(PlayerState startState)
@@ -38,17 +34,13 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState = startState;
 
         if (_currentState != null)
-        {
             _currentState.Enter(_targetMouse);
-        }
     }
 
     private void Transit(PlayerState nextState)
     {
         if (_currentState != null)
-        {
             _currentState.Exit();
-        }
 
         _currentState = nextState;
         _currentState.Enter(_targetMouse);

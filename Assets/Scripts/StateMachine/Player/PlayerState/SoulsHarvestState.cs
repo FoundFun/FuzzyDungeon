@@ -36,18 +36,14 @@ public class SoulsHarvestState : PlayerState
         _demon.Attack();
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(Attack());
     }
     private void OnDisable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _demon.StopAttack();
     }

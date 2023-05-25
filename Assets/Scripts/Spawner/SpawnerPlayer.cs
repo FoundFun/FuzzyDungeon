@@ -43,9 +43,7 @@ public class SpawnerPlayer : ObjectPool<Player>
             SetCurrentSpells(nextPlayer);
 
             if (_game.CurrentIndexPlayer > 0)
-            {
                 DisablePlayer(_pool[_game.CurrentIndexPlayer - 1]);
-            }
         }
 
         return _game.CurrentIndexPlayer < _pool.Count - 1;
@@ -54,9 +52,7 @@ public class SpawnerPlayer : ObjectPool<Player>
     private void InitMouse(List<Player> poolPlayers)
     {
         foreach (var player in poolPlayers)
-        {
             player.Init(_mouse);
-        }
     }
 
     private void EnablePlayer(Player player)
@@ -78,31 +74,19 @@ public class SpawnerPlayer : ObjectPool<Player>
     private void SetCurrentSpells(Player player)
     {
         if (player.GetComponent<AttackAirTransition>())
-        {
             _game.DarkFillFirstSpell.Unlock();
-        }
         else
-        {
             _game.DarkFillFirstSpell.Lock();
-        }
 
         if (player.GetComponent<BallAttackPlayerState>())
-        {
             _game.DarkFillSecondSpell.Unlock();
-        }
         else
-        {
             _game.DarkFillSecondSpell.Lock();
-        }
 
         if (player.GetComponent<SoulsHarvestState>())
-        {
             _game.DarkFillThirdSpell.Unlock();
-        }
         else
-        {
             _game.DarkFillThirdSpell.Lock();
-        }
     }
 
     private void InitSpells(List<Player> players)
@@ -114,9 +98,7 @@ public class SpawnerPlayer : ObjectPool<Player>
                 airState.Init(_explosion, _virtualCamera);
 
                 if (player.TryGetComponent(out AttackAirTransition firstSpell))
-                {
                     firstSpell.Init(_game.DarkFillFirstSpell);
-                }
             }
 
             if (player.TryGetComponent(out BallAttackPlayerState ballState))
@@ -124,9 +106,7 @@ public class SpawnerPlayer : ObjectPool<Player>
                 ballState.Init(_puck, _virtualCamera);
 
                 if (player.TryGetComponent(out AttackBallTransition secondSpell))
-                {
                     secondSpell.Init(_game.DarkFillSecondSpell);
-                }
             }
 
             if (player.TryGetComponent(out SoulsHarvestState soulsState))
@@ -134,9 +114,7 @@ public class SpawnerPlayer : ObjectPool<Player>
                 soulsState.Init(_explosion, _spawnerEnemy.OnKillAllActive, _virtualCamera);
 
                 if (player.TryGetComponent(out AttackSoulsHarvestTransition thirdSpell))
-                {
                     thirdSpell.Init(_game.DarkFillThirdSpell);
-                }
             }
         }
     }

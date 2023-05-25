@@ -23,9 +23,7 @@ public class EnemyStateMachine : MonoBehaviour
         _target = _enemy.Target;
 
         if (_currentState != null)
-        {
             _currentState.Exit();
-        }
 
         Reset(_startState);
     }
@@ -33,24 +31,18 @@ public class EnemyStateMachine : MonoBehaviour
     private void OnDisable()
     {
         if (_target != null)
-        {
             Transit(_startState);
-        }
     }
 
     private void Update()
     {
         if (_currentState == null)
-        {
             return;
-        }
 
         var nextState = _currentState.GetNextState();
 
         if (nextState != null)
-        {
             Transit(nextState);
-        }
     }
 
     private void Reset(EnemyState startState)
@@ -58,17 +50,13 @@ public class EnemyStateMachine : MonoBehaviour
         _currentState = startState;
 
         if (_currentState != null)
-        {
             _currentState.Enter(_target);
-        }
     }
 
     private void Transit(EnemyState nextState)
     {
         if (_currentState != null)
-        {
             _currentState.Exit();
-        }
 
         _currentState = nextState;
         _currentState.Enter(_target);

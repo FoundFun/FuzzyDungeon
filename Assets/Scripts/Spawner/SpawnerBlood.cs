@@ -18,8 +18,6 @@ public class SpawnerBlood : ObjectPool<Blood>
         int index = Random.Range(0, _pool.Count);
 
         if (TryGetObject(out Blood blood, index))
-        {
             blood.Play(enemy);
-        }
     }
 }

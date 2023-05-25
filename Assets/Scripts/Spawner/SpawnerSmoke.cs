@@ -18,8 +18,6 @@ public class SpawnerSmoke : ObjectPool<Smoke>
         int index = Random.Range(0, _pool.Count);
 
         if (TryGetObject(out Smoke smoke, index))
-        {
             smoke.Play(enemy);
-        }
     }
 }

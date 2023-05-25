@@ -50,9 +50,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
         _currentMinSecondBetweenSpawn = StartMinSecondBetweenSpawn;
 
         if (_coroutine != null)
-        {
             StopCoroutine(_coroutine);
-        }
 
         _coroutine = StartCoroutine(CountTimeSpawn());
     }
@@ -62,9 +60,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
         if (_isSpawn)
         {
             if (_coroutine != null)
-            {
                 StopCoroutine(_coroutine);
-            }
 
             for (int i = 0; i < _count; i++)
             {
@@ -114,9 +110,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
     public void Reset()
     {
         foreach (var enemy in _pool)
-        {
             enemy.gameObject.SetActive(false);
-        }
     }
 
     public void OnKillAllActive()
@@ -124,9 +118,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
         var activeEnemies = _pool.Where(enemy => enemy.gameObject.activeSelf == true);
 
         foreach (var enemy in activeEnemies)
-        {
             enemy.OnDie();
-        }
     }
 
     public void ResetSpawnParameters()
@@ -144,9 +136,7 @@ public class SpawnerEnemy : ObjectPool<Enemy>
         while (!_isSpawn)
         {
             if (elapsedTime > _currentSecondBetweenSpawn)
-            {
                 _isSpawn = true;
-            }
 
             elapsedTime += Time.deltaTime;
 

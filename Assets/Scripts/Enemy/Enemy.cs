@@ -41,9 +41,7 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         if (_coroutine != null)
-        {
             StopCoroutine(Die());
-        }
 
         _collider2D.enabled = false;
         _spriteRenderer.enabled = false;
@@ -69,9 +67,7 @@ public class Enemy : MonoBehaviour
         Died?.Invoke(this);
 
         if (_coroutine != null)
-        {
             StopCoroutine(Die());
-        }
 
         _coroutine = StartCoroutine(Die());
     }
