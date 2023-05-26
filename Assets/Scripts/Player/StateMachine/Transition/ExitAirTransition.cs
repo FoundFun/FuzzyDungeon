@@ -4,7 +4,7 @@ namespace Players
 {
     public class ExitAirTransition : Transition
     {
-        [SerializeField] private float AttackTime = 2.6f;
+        private const float AttackTime = 2.6f;
 
         private float _elapsedTime;
 
