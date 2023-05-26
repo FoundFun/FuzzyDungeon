@@ -102,6 +102,9 @@ public class Game : MonoBehaviour
     public void OnLevelChanged(int level)
     {
         _currentLevel.text = level.ToString();
+
+        if (PlayerPrefs.GetInt(_startView.BestLevel) < level)
+            _startView.SetBestLevel(level);
     }
 
     public void OnDied(Player player)

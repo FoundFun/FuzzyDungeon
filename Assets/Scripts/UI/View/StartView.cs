@@ -9,6 +9,7 @@ public class StartView : View
     [SerializeField] private TMP_Text _dungeonText;
     [SerializeField] private TMP_Text _keeperText;
     [SerializeField] private TMP_Text _clickToPlayText;
+    [SerializeField] private TMP_Text _bestLevel;
 
     private const float TargetPositionText = -100;
     private const float DungeonTextSpeedAnimation = 4;
@@ -19,12 +20,15 @@ public class StartView : View
     private Coroutine _musicCoroutine;
     private AudioSource _audioSource;
 
+    public string BestLevel { get; private set; }
+
     public event UnityAction StartButtonClick;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.volume = 0;
+        _bestLevel.text = PlayerPrefs.GetInt(BestLevel).ToString();
     }
 
     public void OpenScreen()
@@ -35,6 +39,12 @@ public class StartView : View
     public void CloseScreen()
     {
         Close();
+    }
+
+    public void SetBestLevel(int level)
+    {
+        PlayerPrefs.SetInt(BestLevel, level);
+        _bestLevel.text = PlayerPrefs.GetInt(BestLevel).ToString();
     }
 
     protected override void Open()
@@ -95,9 +105,7 @@ public class StartView : View
             _clickToPlayText.color = targetColor;
 
             if (targetColor.a == targetAlpha)
-            {
                 targetAlpha = targetAlpha == 1 ? 0 : 1;
-            }
 
             yield return null;
         }

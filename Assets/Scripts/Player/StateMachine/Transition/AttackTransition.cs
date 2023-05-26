@@ -4,7 +4,7 @@ namespace Players
 {
     public class AttackTransition : Transition
     {
-        [SerializeField] private float DelayAttack = 0.15f;
+        private const float DelayAttack = 0.15f;
 
         private float _currentTime;
 
