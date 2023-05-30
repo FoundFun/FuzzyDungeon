@@ -50,9 +50,9 @@ public class SpawnerPlayer : ObjectPool<Player>
         return _game.CurrentIndexPlayer < _pool.Count - 1;
     }
 
-    private void InitMouse(List<Player> poolPlayers)
+    private void InitMouse(List<Player> pool)
     {
-        foreach (var player in poolPlayers)
+        foreach (var player in pool)
             player.Init(_mouse);
     }
 
