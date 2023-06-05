@@ -8,6 +8,6 @@ public class Yandex : MonoBehaviour
 
     public void OnShowAds()
     {
-        //ShowAds();
+        ShowAds();
     }
 }
