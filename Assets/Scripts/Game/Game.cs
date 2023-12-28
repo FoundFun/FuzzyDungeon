@@ -22,7 +22,6 @@ public class Game : MonoBehaviour
     [SerializeField] private DarkFill _darkFillSecondSpell;
     [SerializeField] private DarkFill _darkFillThirdSpell;
     [SerializeField] private HealthBar _healthBar;
-    [SerializeField] private Yandex _yandex;
 
     private const float DelayReset = 2;
     private const float DelayRespawn = 1;
@@ -42,11 +41,6 @@ public class Game : MonoBehaviour
     public DarkFill DarkFillSecondSpell => _darkFillSecondSpell;
     public DarkFill DarkFillThirdSpell => _darkFillThirdSpell;
     public int CurrentIndexPlayer => _currentIndexPlayer;
-
-    private void Awake()
-    {
-        _yandex.OnShowAds();
-    }
 
     private void OnEnable()
     {
@@ -88,7 +82,6 @@ public class Game : MonoBehaviour
         _gameScreen.OnStopMusic();
         _gameOverView.CloseScreen();
         _startView.OpenScreen();
-        _yandex.OnShowAds();
 
         yield return new WaitForSecondsRealtime(DelayRespawn);
 
